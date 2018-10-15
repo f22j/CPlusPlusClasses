@@ -1,1 +1,3 @@
-# socket_chat
+# homeworks for itstep
+# dont copy
+# ANDRYSHKA HRUSHKA COPYRIGHT
