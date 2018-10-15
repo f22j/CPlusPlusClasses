@@ -11,9 +11,6 @@ void main() {
 	t.set_minute(59);
 	t.set_second(54);
 
-	char command[100];
-	cin.getline(command, 100);
-
 	while (true) {
 
 		t.get_time();
@@ -22,7 +19,7 @@ void main() {
 		t.append_second();
 		if (t.get_hour() == 0 && t.get_second() == 0) Beep(999, 400);
 
-		system(command);
+		system("cls");
 
 	};
 
