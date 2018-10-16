@@ -11,6 +11,15 @@ class Time {
 	}
 
 	public:
+
+		Time(int h = 0, int m = 0, int s = 0) {
+
+			set_hour(h);
+			set_minute(m);
+			set_second(s);
+
+		}
+
 		void set_second(int new_second){
 
 			if (new_second > 60 || new_second < 0)second = 0;
@@ -40,31 +49,31 @@ class Time {
 
 		};
 
-		void append_hour(){
+		void append_hour(int added_hour = 1){
 
-			if (hour == 23)hour = 0; else hour++;
+			if (hour + added_hour >= 23)hour = (hour + added_hour) - 24; else hour += added_hour;
 
 		};
 
-		void append_minute(){
-		
-			if (minute == 59) {
+		void append_minute(int added_minute = 1){
 
-				minute = 0;
+			if (minute + added_minute >= 59) {
+
+				minute = (minute + added_minute) - 60;
 				append_hour();
 
-			}else minute++;
-		
+			}else minute += added_minute;
+
 		}
 
-		void append_second() {
+		void append_second(int added_second = 1) {
 
-			if (second == 59) {
+			if (second + added_second >= 59) {
 
-				second = 0;
+				second = (second + added_second) - 60;
 				append_minute();
 
-			}else second++;
+			}else second += added_second;
 
 		}
 
