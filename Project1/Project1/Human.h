@@ -18,6 +18,12 @@ public:
 
 	};
 
+	Human(const Human &obj) {
+
+		
+
+	}
+
 	void human_info(const char *delimeter = "\n") {
 
 		cout << name << delimeter << age << delimeter << sex << delimeter;
