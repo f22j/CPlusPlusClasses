@@ -59,13 +59,17 @@ public:
 
 	void add_mark(int added_mark) {
 
-		if (!marks[marks_size]) {
+		for (int i = 0; i < marks_size - 1; i++) {
 
-			delete[] marks;
-			marks_size++;
+			if (marks[i]) {
 
-			marks = new int[marks_size];
-			marks[marks_size - 1] = added_mark;
+				delete[] marks;
+				marks_size++;
+
+				marks = new int[marks_size];
+				marks[marks_size - 1] = added_mark;
+
+			};
 
 		};
 
