@@ -9,8 +9,17 @@ class Student {
 	int *marks, marks_size;
 	bool sex;
 
+	bool good_mark(int mark){
+
+		for (int i = 1; i <= 5; i++) {
+			if (mark == i)return true;
+		}
+
+		return false;
+	}
+
 public:
-	Student(const char *new_name, unsigned short new_age, const char *new_group, bool new_sex, int marks_number, ...) {
+	Student(const char *new_name, unsigned short new_age, const char *new_group, bool new_sex) {
 
 		name = new char[strlen(new_name) + 1];
 		strcpy_s(name, strlen(new_name) + 1, new_name);
@@ -19,17 +28,24 @@ public:
 		group = new char[strlen(new_group) + 1];
 		strcpy_s(group, strlen(new_group) + 1, new_group);
 
-		marks = new int[marks_number];
-		int *temp_marks = &marks_number, marks_size = marks_number;
-
-		for (int i = 0; i < marks_size; i++)marks[i] = *temp_marks;
+		marks_size = 0;
+		marks = new int[marks_size];
 
 	};
 
 	void student_info(const char *delimeter = "\n") {
 
 		cout << name << delimeter << age << delimeter << sex << delimeter << group << delimeter;
-		for (int i = 0; i < marks_size; i++)cout << marks[i] << " ";
+
+		int sum = 0;
+		for (int i = 0; i < marks_size; i++){
+
+			cout << marks[i] << " ";
+			sum += marks[i];
+
+		}
+
+		cout << delimeter << (float)sum / marks_size << delimeter;
 
 	}
 
@@ -59,21 +75,19 @@ public:
 
 	void add_mark(int added_mark) {
 
-		for (int i = 0; i < marks_size - 1; i++) {
+		if (!good_mark(added_mark))return;
 
-			if (marks[i]) {
+		int *temp_marks = new int[marks_size];
+		for (int i = 0; i < marks_size; i++)temp_marks[i] = marks[i];
+		delete[] marks;
 
-				delete[] marks;
-				marks_size++;
+		marks = new int[++marks_size];
+		for (int i = 0; i < marks_size - 1; i++)marks[i] = temp_marks[i];
 
-				marks = new int[marks_size];
-				marks[marks_size - 1] = added_mark;
+		marks[marks_size - 1] = added_mark;
+		delete[] temp_marks;
 
-			};
-
-		};
-
-	}
+	};
 
 	void set_gender(bool setted_sex) {
 		sex = setted_sex;
