@@ -2,12 +2,13 @@
 #include <iostream>
 using namespace std;
 
-class Date{
+class Date {
 
-	void need_null(int needer);
+	void need_null(int needer)const;
 	int day, month, year;
 
 public:
+	Date();
 	Date(int day, int month, int year);
 
 	void set_day(int day);
@@ -15,12 +16,14 @@ public:
 	void set_year(int year);
 	void set_date(int day, int month, int year);
 
-	int get_day();
-	int get_month();
-	int get_year();
+	int get_day()const;
+	int get_month()const;
+	int get_year()const;
 
-	void print_date();
-	bool is_lipe();
+	void print_date()const;
+	bool is_lipe()const;
 
 	~Date();
 };
+
+ostream & operator<<(ostream & os, const Date & dt);

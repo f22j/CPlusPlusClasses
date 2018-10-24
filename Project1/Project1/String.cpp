@@ -1,4 +1,5 @@
 #include "String.h"
+#include "Student.h"
 
 String::String() {
 
@@ -7,7 +8,7 @@ String::String() {
 
 }
 
-String::String(int len) {
+String::String(int len = 0) {
 
 	length = len;
 	str = new char[len];
@@ -133,16 +134,56 @@ String & String::operator+=(const String & str) {
 
 String::~String() {
 
-	if (length != 0)delete[] str;
+	if (length != 0)
+		delete[] str;
 
 	str = nullptr;
 	length = 0;
 
 }
 
+String & String::operator=(const String & str){
+
+	if (this == &str)
+		return *this;
+
+	if (this->length == str.length) {
+
+		for(int i = 0; i < this->get_length(); i++)
+			this->str[i] = str.str[i];
+		return *this;
+
+	}
+
+	this->~String();
+
+	if (str.get_length() == 0)
+		return *this;
+
+	this->length = str.get_length();
+	this->str = new char[this->length + 1];
+
+	for (int i = 0; i < this->length; i++)
+		this->str[i] = str.str[i];
+
+	this->str[this->length - 1] = '\0';
+	return *this;
+
+}
+
+Date Student::get_birth() const {
+	return birth_date;
+}
 
 ostream & operator<<(ostream & os, const String &str) {
 
-	for (int i = 0; i < str.get_length(); i++)cout << str.get_symbol(i);
+	str.print();
 	return os;
+}
+
+istream & operator>>(istream & is, String & str){
+
+	str.input();
+	return is;
+
 }

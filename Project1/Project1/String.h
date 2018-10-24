@@ -2,14 +2,14 @@
 #include <iostream>
 using namespace std;
 
-class String{
+class String {
 
 	char *str;
 	int length;
 
 public:
 	String();
-	String(int length = 0);
+	String(int length);
 	String(const char *str);
 	String(const String &copy_str);
 
@@ -28,8 +28,10 @@ public:
 	void erase(int pos, int length);
 
 	String & operator+=(const String & str);
+	String & operator=(const String & str);
 
 	~String();
 };
 
 ostream & operator<<(ostream &os, const String &str);
+istream & operator>>(istream &is, String &str);
