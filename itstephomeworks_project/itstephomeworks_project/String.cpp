@@ -171,10 +171,6 @@ String & String::operator=(const String & str){
 
 }
 
-Date Student::get_birth() const {
-	return birth_date;
-}
-
 ostream & operator<<(ostream & os, const String &str) {
 
 	str.print();
@@ -186,4 +182,28 @@ istream & operator>>(istream & is, String & str){
 	str.input();
 	return is;
 
+}
+
+bool operator==(String & str, String & str2){
+	return str.get_string() == str2.get_string();
+}
+
+bool operator!=(String & str, String & str2){
+	return str.get_string() != str2.get_string();
+}
+
+bool operator<(String & str, String str2){
+	return str.get_string() < str2.get_string();
+}
+
+bool operator>(String & str, String str2) {
+	return str.get_string() > str2.get_string();
+}
+
+bool operator>=(String & str, String str2) {
+	return str.get_string() >= str2.get_string();
+}
+
+bool operator<=(String & str, String str2) {
+	return str.get_string() <= str2.get_string();
 }

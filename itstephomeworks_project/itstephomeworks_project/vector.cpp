@@ -196,3 +196,16 @@ ostream & operator<<(ostream & os, vector & vr){
 	return os;
 
 }
+
+istream & operator>>(istream & is, vector & vr) {
+
+	for (int i = 0; i < vr.get_size(); i++) {
+
+		int x;
+		cin >> x;
+		vr[i] = x;
+
+	}
+
+	return is;
+}

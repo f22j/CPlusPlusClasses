@@ -34,3 +34,4 @@ public:
 };
 
 ostream & operator<<(ostream &os, vector &vr);
+istream & operator>>(istream &is, vector &vr);
