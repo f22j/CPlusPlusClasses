@@ -100,9 +100,12 @@ Drob operator*(const Drob & a, const Drob & b){
 
 }
 
-Drob operator/(const Drob & a, const Drob & b)
-{
-	return Drob();
+Drob operator/(const Drob & a, const Drob & b){
+
+	Drob tmp(a.get_x(), a.get_y());
+	tmp /= b;
+
+	return tmp;
 }
 
 bool operator<(const Drob & a, const Drob & b){
