@@ -16,7 +16,7 @@ void Date::need_null(int needer) const {
 
 void Date::set_day(int day) {
 
-	if (day <= 30 && day > 0)this->day = day;
+	if (day <= 31 && day > 0)this->day = day;
 	else this->day = 1;
 
 }
@@ -55,6 +55,70 @@ int Date::get_year() const {
 	return year;
 }
 
+void Date::append_day(){
+
+	if (this->day == 31) {
+
+		this->day = 1;
+		append_month();
+		return;
+
+	}
+
+	this->day++;
+
+}
+
+void Date::append_month(){
+
+	if (this->month == 12) {
+
+		this->month = 1;
+		append_year();
+		return;
+
+	}
+
+	this->month++;
+
+}
+
+void Date::append_year(){
+	this->year++;
+}
+
+void Date::pop_day(){
+
+	if(this->day == 1){
+
+		this->day = 31;
+		pop_month();
+		return;
+
+	}
+
+	this->day--;
+
+}
+
+void Date::pop_month(){
+
+	if (this->month == 1) {
+
+		this->month = 12;
+		pop_year();
+		return;
+
+	}
+
+	this->month--;
+
+}
+
+void Date::pop_year(){
+	this->year--;
+}
+
 void Date::print_date() const{
 	need_null(day);
 	cout << day << "/";
@@ -76,10 +140,118 @@ bool Date::is_lipe() const {
 	return true;
 }
 
-
 ostream & operator<<(ostream & os, const Date & dt){
 
 	dt.print_date();
 	return os;
+
+}
+
+bool operator<(Date & dt, Date & dt2){
+
+	if (dt.get_year() == dt2.get_year()){
+
+		if (dt.get_month() == dt2.get_month())
+			return dt.get_day() < dt.get_day();
+
+		return dt.get_month() < dt.get_month();
+
+	}
+
+	return dt.get_year() < dt2.get_year();
+
+}
+
+bool operator>(Date & dt, Date & dt2){
+
+	if (dt.get_year() == dt2.get_year()) {
+
+		if (dt.get_month() == dt2.get_month())
+			return dt.get_day() > dt.get_day();
+
+		return dt.get_month() > dt.get_month();
+
+	}
+
+	return dt.get_year() > dt2.get_year();
+}
+
+bool operator>=(Date & dt, Date & dt2){
+
+	if (dt.get_year() == dt2.get_year()) {
+
+		if (dt.get_month() == dt2.get_month())
+			return dt.get_day() >= dt.get_day();
+
+		return dt.get_month() >= dt.get_month();
+
+	}
+
+	return dt.get_year() >= dt2.get_year();
+}
+
+bool operator<=(Date & dt, Date & dt2){
+
+	if (dt.get_year() == dt2.get_year()) {
+
+		if (dt.get_month() == dt2.get_month())
+			return dt.get_day() <= dt.get_day();
+
+		return dt.get_month() <= dt.get_month();
+
+	}
+
+	return dt.get_year() <= dt2.get_year();
+}
+
+bool operator!=(Date & dt, Date & dt2){
+
+	if (dt.get_year() != dt2.get_year()) {
+
+		if (dt.get_month() != dt2.get_month())
+			return dt.get_day() != dt.get_day();
+
+	}
+
+}
+
+bool operator==(Date & dt, Date & dt2){
+
+	if (dt.get_year() == dt2.get_year()) {
+
+		if (dt.get_month() == dt2.get_month())
+			return dt.get_day() == dt.get_day();
+
+	}
+
+}
+
+Date Date::operator++() {
+
+	append_day();
+	return *this;
+
+}
+
+Date Date::operator++(int) {
+
+	Date tmp = *this;
+	append_day();
+	return tmp;
+
+}
+
+Date Date::operator--() {
+
+	pop_day();
+	return *this;
+
+}
+
+Date Date::operator--(int) {
+
+	Date tmp = *this;
+	pop_day();
+	return tmp;
 
 }

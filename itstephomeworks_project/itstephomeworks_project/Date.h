@@ -20,9 +20,32 @@ public:
 	int get_month()const;
 	int get_year()const;
 
+	void append_day();
+	void append_month();
+	void append_year();
+
+	void pop_day();
+	void pop_month();
+	void pop_year();
+
 	void print_date()const;
 	bool is_lipe()const;
 
+	Date operator++();
+	Date operator++(int);
+
+	Date operator--();
+	Date operator--(int);
+	
 };
 
 ostream & operator<<(ostream & os, const Date & dt);
+
+bool operator<(Date &dt, Date &dt2);
+bool operator>(Date &dt, Date &dt2);
+
+bool operator>=(Date &dt, Date &dt2);
+bool operator<=(Date &dt, Date &dt2);
+
+bool operator!=(Date &dt, Date &dt2);
+bool operator==(Date &dt, Date &dt2);

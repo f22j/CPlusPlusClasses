@@ -1,5 +1,4 @@
 #include "String.h"
-#include "Student.h"
 
 String::String() {
 
