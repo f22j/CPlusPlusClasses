@@ -43,5 +43,3 @@ bool operator<(String &str, String str2);
 bool operator>=(String &str, String str2);
 bool operator<=(String &str, String str2);
 bool operator>=(String &str, String str2);
-
-String & operator+(String &str, String &str2);

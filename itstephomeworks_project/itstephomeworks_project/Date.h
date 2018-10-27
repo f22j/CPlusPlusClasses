@@ -23,7 +23,6 @@ public:
 	void print_date()const;
 	bool is_lipe()const;
 
-	~Date();
 };
 
 ostream & operator<<(ostream & os, const Date & dt);

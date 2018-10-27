@@ -83,5 +83,3 @@ ostream & operator<<(ostream & os, const Date & dt){
 	return os;
 
 }
-
-Date::~Date() {}
