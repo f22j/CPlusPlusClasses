@@ -1,10 +1,22 @@
 #include <iostream>
-#include "Date.h"
+#include <Windows.h>
 using namespace std;
 
-void main() {
+int main() {
 
+	const char str[] = "-------------------LOADING-------------------";
 
+	while (true) {
 
-	system("pause");
+		for (char symb : str) {
+			Sleep(100);
+			cout << symb;
+		}
+
+		Sleep(1000);
+
+		system("cls");
+
+	}
+
 }

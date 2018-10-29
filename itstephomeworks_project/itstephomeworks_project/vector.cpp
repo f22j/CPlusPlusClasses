@@ -190,7 +190,7 @@ vector::~vector(){
 
 }
 
-ostream & operator<<(ostream & os, vector & vr){
+ostream & operator<<(ostream & os, const vector & vr){
 
 	vr.print();
 	return os;

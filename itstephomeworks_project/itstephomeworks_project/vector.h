@@ -33,5 +33,5 @@ public:
 
 };
 
-ostream & operator<<(ostream &os, vector &vr);
+ostream & operator<<(ostream &os, const vector &vr);
 istream & operator>>(istream &is, vector &vr);

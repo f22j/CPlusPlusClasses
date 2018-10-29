@@ -147,6 +147,25 @@ ostream & operator<<(ostream & os, const Date & dt){
 
 }
 
+istream & operator>>(istream & is, Date & dt){
+
+	int day;
+	cout << "Write day:";
+	cin >> day;
+
+	int month;
+	cout << "Write month:";
+	cin >> month;
+
+	int year;
+	cout << "Write year:";
+	cin >> year;
+
+	dt.set_date(day, month, year);
+	return is;
+
+}
+
 bool operator<(Date & dt, Date & dt2){
 
 	if (dt.get_year() == dt2.get_year()){
@@ -213,6 +232,8 @@ bool operator!=(Date & dt, Date & dt2){
 
 	}
 
+	return false;
+
 }
 
 bool operator==(Date & dt, Date & dt2){
@@ -223,6 +244,8 @@ bool operator==(Date & dt, Date & dt2){
 			return dt.get_day() == dt.get_day();
 
 	}
+
+	return false;
 
 }
 

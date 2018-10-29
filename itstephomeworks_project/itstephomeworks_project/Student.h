@@ -1,114 +1,33 @@
 #pragma once
 #include <iostream>
+#include "String.h"
+#include "Date.h"
+#include "vector.h"
 using namespace std;
 
 class Student {
 
-	char *name, *group;
-	unsigned short age;
-	int *marks, marks_size;
-	bool sex;
-
-	bool good_mark(int mark){
-
-		for (int i = 1; i <= 5; i++) {
-			if (mark == i)return true;
-		}
-
-		return false;
-	}
+	String name, group;
+	Date birth_date;
+	vector marks;
 
 public:
-	Student(const char *new_name, unsigned short new_age, const char *new_group, bool new_sex) {
+	Student(String &name, String &group, Date &birth_date, vector &marks);
 
-		name = new char[strlen(new_name) + 1];
-		strcpy_s(name, strlen(new_name) + 1, new_name);
-		sex = new_sex;
+	void set_name(String &name);
+	void set_group(String &group);
+	void set_birth(Date &birth_date);
+	void set_marks(vector &marks);
+	void add_mark(int mark);
 
-		group = new char[strlen(new_group) + 1];
-		strcpy_s(group, strlen(new_group) + 1, new_group);
+	const char *get_name() const;
+	const char *get_group() const;
+	vector get_marks() const;
+	Date get_birth() const;
 
-		marks_size = 0;
-		marks = new int[marks_size];
-
-	};
-
-	void student_info(const char *delimeter = "\n") {
-
-		cout << name << delimeter << age << delimeter << sex << delimeter << group << delimeter;
-
-		int sum = 0;
-		for (int i = 0; i < marks_size; i++){
-
-			cout << marks[i] << " ";
-			sum += marks[i];
-
-		}
-
-		cout << delimeter << (float)sum / marks_size << delimeter;
-
-	}
-
-	void set_name(const char *setted_name) {
-
-		if (strlen(setted_name) != strlen(name)) {
-
-			delete[] name;
-			name = new char[strlen(setted_name) + 1];
-
-		};
-
-		strcpy_s(name, strlen(setted_name) + 1, setted_name);
-
-	}
-
-	void set_group(const char *setted_group) {
-		if (strlen(setted_group) != strlen(group)) {
-
-			delete[] group;
-			group = new char[strlen(setted_group) + 1];
-
-		};
-
-		strcpy_s(group, strlen(setted_group) + 1, setted_group);
-	}
-
-	void add_mark(int added_mark) {
-
-		if (!good_mark(added_mark))return;
-
-		int *temp_marks = new int[marks_size];
-		for (int i = 0; i < marks_size; i++)temp_marks[i] = marks[i];
-		delete[] marks;
-
-		marks = new int[++marks_size];
-		for (int i = 0; i < marks_size - 1; i++)marks[i] = temp_marks[i];
-
-		marks[marks_size - 1] = added_mark;
-		delete[] temp_marks;
-
-	};
-
-	void set_gender(bool setted_sex) {
-		sex = setted_sex;
-	}
-
-	void set_age(int setted_age) {
-
-		if (setted_age >= 0)age = setted_age;
-		else age = 1;
-
-	}
-
-	unsigned short get_age() { return age; }
-	bool get_sex() { return sex; }
-
-	const char *get_name() { return name; }
-	const char *get_group() { return group; }
-
-	~Student() {
-		delete[] name; 
-		delete[] marks;
-	}
+	void print() const;
 
 };
+
+ostream & operator<<(ostream & os, const Student & st);
+istream & operator>>(istream & is, Student & st);

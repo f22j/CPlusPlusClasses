@@ -40,6 +40,7 @@ public:
 };
 
 ostream & operator<<(ostream & os, const Date & dt);
+istream & operator>>(istream & is, Date & dt);
 
 bool operator<(Date &dt, Date &dt2);
 bool operator>(Date &dt, Date &dt2);
