@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 using namespace std;
 
 class engine{
@@ -9,6 +10,7 @@ class engine{
 	int cyl_count;
 
 public:
+	engine();
 	engine(float volume, int power, int cyl_count);
 
 	void print() const;
@@ -20,6 +22,9 @@ public:
 	void set_volume(float volume);
 	void set_power(int power);
 	void set_cylinder(int cyl_count);
+
+	string get_info() const;
+
 };
 
 ostream &operator<<(ostream & os, engine & en);
