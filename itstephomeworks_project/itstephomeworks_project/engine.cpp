@@ -1,5 +1,11 @@
 #include "engine.h"
 
+engine::engine(){
+	set_volume(0);
+	set_power(0);
+	set_cylinder(0);
+}
+
 engine::engine(float volume, int power, int cyl_count){
 
 	this->set_volume(volume);
@@ -42,7 +48,15 @@ void engine::set_cylinder(int cyl_count){
 		this->cyl_count = cyl_count;
 }
 
+string engine::get_info() const{
+
+	string res = "Volume:" + to_string(volume);
+	res += "\nPower:" + to_string(power) + "\nCylinder count:" + to_string(cyl_count) + "\n";
+	return res;
+
+}
+
 ostream & operator<<(ostream & os, engine & en){
-	en.print();
+	os << en.get_info();
 	return os;
 }
