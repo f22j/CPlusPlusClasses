@@ -25,15 +25,15 @@ void gearbox::set_shift(int shift){
 
 }
 
-GearboxType gearbox::get_type(){
+GearboxType gearbox::get_type() const {
 	return this->type;
 }
 
-int gearbox::get_shift(){
+int gearbox::get_shift() const {
 	return this->shift;
 }
 
-string gearbox::get_info(){
+string gearbox::get_info() const{
 	string res = "Shift:" + to_string(shift) + "\nType:";
 
 	switch (this->type) {
@@ -57,4 +57,44 @@ string gearbox::get_info(){
 	}
 
 	return res;
+}
+
+ostream & operator<<(ostream & os, const gearbox & gb){
+
+	os << gb.get_info();
+	return os;
+}
+
+istream & operator>>(istream & is, gearbox & gb){
+	
+	int gbtype;
+	cout << "1.AUTO\n2.MECH\n3.MIXED\nWrite gearbox type:";
+	cin >> gbtype;
+
+	switch (gbtype) {
+
+		case 1:
+			gb.set_type(GearboxType::AUTO);
+			break;
+
+		case 2:
+			gb.set_type(GearboxType::MECH);
+			break;
+
+		case 3:
+			gb.set_type(GearboxType::MIXED);
+			break;
+
+		default:
+			gb.set_type(GearboxType::UNDEFINED);
+			break;
+
+	}
+
+	int shift;
+	cout << "Write shift:";
+	cin >> shift;
+
+	gb.set_shift(shift);
+	return is;
 }

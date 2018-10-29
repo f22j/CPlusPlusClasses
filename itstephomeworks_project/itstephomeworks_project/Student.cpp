@@ -2,8 +2,6 @@
 
 Student::Student(String &name, String &group, Date &birth_date, vector &marks) {
 
-	
-
 	set_name(name);
 	set_group(group);
 	set_birth(birth_date);

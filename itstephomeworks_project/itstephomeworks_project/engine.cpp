@@ -56,7 +56,29 @@ string engine::get_info() const{
 
 }
 
-ostream & operator<<(ostream & os, engine & en){
+ostream & operator<<(ostream & os, const engine & en){
+
 	os << en.get_info();
 	return os;
+
+}
+
+istream & operator>>(istream & is, engine & en){
+
+	int power, cylinder, volume;
+
+	cout << "Write power:";
+	is >> power;
+	en.set_power(power);
+
+	cout << "Write volume:";
+	is >> volume;
+	en.set_volume(volume);
+
+	cout << "Write cylinder number:";
+	is >> cylinder;
+	en.set_cylinder(cylinder);
+
+	return is;
+
 }

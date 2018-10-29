@@ -5,8 +5,7 @@ using namespace std;
 
 class disk{
 
-	int diametr;
-	int stamina;
+	int diametr, stamina;
 	string material;
 
 public:
@@ -27,3 +26,6 @@ public:
 	void rotation();
 
 };
+
+ostream & operator<<(ostream & os, const disk &dk);
+istream & operator>>(istream & is, disk &dk);

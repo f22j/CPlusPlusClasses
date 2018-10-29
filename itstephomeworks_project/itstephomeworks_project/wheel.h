@@ -29,3 +29,4 @@ public:
 };
 
 ostream & operator<<(ostream & os, const wheel &wh);
+istream & operator>>(istream & is, wheel &wh);

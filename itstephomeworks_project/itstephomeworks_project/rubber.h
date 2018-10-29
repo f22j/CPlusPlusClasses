@@ -20,6 +20,7 @@ public:
 	string get_info() const;
 
 	void rotation();
-
-	~rubber();
 };
+
+ostream &operator<<(ostream &os, const rubber &rb);
+istream &operator>>(istream &is, rubber &rb);

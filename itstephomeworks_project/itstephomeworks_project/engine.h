@@ -27,4 +27,5 @@ public:
 
 };
 
-ostream &operator<<(ostream & os, engine & en);
+ostream &operator<<(ostream & os, const engine & en);
+istream &operator>>(istream & is, engine & en);

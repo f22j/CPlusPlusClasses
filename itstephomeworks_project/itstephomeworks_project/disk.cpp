@@ -67,3 +67,29 @@ void disk::rotation() {
 		this->~disk();
 
 }
+
+ostream & operator<<(ostream & os, const disk & dk){
+	
+	os << dk.get_info();
+	return os;
+}
+
+istream & operator>>(istream & is, disk & dk){
+	
+	int diametr, stamina;
+	string material;
+
+	cout << "Write diametr:";
+	is >> diametr;
+	dk.set_diametr(diametr);
+
+	cout << "Write stamina:";
+	cin >> stamina;
+	dk.set_stamina(stamina);
+
+	cout << "Write material:";
+	cin >> material;
+	dk.set_material(material);
+
+	return is;
+}

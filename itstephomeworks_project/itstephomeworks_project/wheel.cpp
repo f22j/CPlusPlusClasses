@@ -65,3 +65,23 @@ ostream & operator<<(ostream & os, const wheel & wh){
 	return os;
 
 }
+
+istream & operator>>(istream & is, wheel & wh){
+
+	rubber pattern_rubber;
+	cout << "Rubber\n";
+	is >> pattern_rubber;
+	wh.set_rubber(pattern_rubber);
+
+	disk disk_pattern;
+	cout << "Disk\n";
+	is >> disk_pattern;
+	wh.set_disk(disk_pattern);
+
+	int diametr;
+	cout << "Write diametr:";
+	is >> diametr;
+
+	wh.set_diametr(diametr);
+	return is;
+}

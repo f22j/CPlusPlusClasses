@@ -49,6 +49,24 @@ void rubber::rotation(){
 
 }
 
-rubber::~rubber(){
-	cout << "Rubber has been torned";
+ostream & operator<<(ostream & os, const rubber & rb){
+	
+	os << rb.get_info();
+	return os;
+}
+
+istream & operator>>(istream & is, rubber & rb){
+
+	bool weather_type;
+	int stamina;
+
+	cout << "Write tire type:";
+	cin >> weather_type;
+	rb.set_type(weather_type);
+
+	cout << "Write stamina:";
+	cin >> stamina;
+	rb.set_stamina(stamina);
+
+	return is;
 }
