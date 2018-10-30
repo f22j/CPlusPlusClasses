@@ -30,7 +30,6 @@ Car::Car(float volume, int power, int cyl_count, GearboxType type,
 	set_posy(posy);
 
 	set_speed(speed);
-
 }
 
 Car::Car(const Car & cr){
@@ -206,6 +205,24 @@ int Car::get_speed()const{
 	return this->speed;
 }
 
+void Car::repair(int &materials, int level){
+
+	materials -= level;
+
+	if (materials <= 0) {
+
+		cout << "Not enough materials!\n";
+		Sleep(500);
+		system("cls");
+		return;
+
+	};
+
+	for(int i = 0; i < this->wheels_number; i++)
+		this->wh[i].repair(materials);
+
+}
+
 void Car::set_posy(int pos){
 
 	if (pos > 0)
@@ -235,14 +252,25 @@ void Car::set_speed(int speed){
 
 void Car::draw(int posx, int posy) {
 
-	for (int j = 0; j < posx; j++) {
-		for (int i = 0; i < posy; i++) cout << "*";
+	for (int j = 0; j < this->sizey; j++) {
+
+		for (int i = 0; i < posy; i++) 
+			cout << " ";
+
+		for (int i = 0; i < this->sizex; i++)
+			cout << "*";
+
 		cout << endl;
 	}
 
 }
 
 void Car::go(){
+
+	if (this->wh->rotation())
+		return;
+
+	this->wh->rotation();
 	system("cls");
 
 	this->currpos_x++;
@@ -250,10 +278,25 @@ void Car::go(){
 
 	draw(this->currpos_x, this->currpos_y);
 	Sleep(this->speed);
+
 }
 
-void Car::stop(){
-	draw(--this->currpos_x, this->currpos_y);
+void Car::go_back(){
+
+	if(this->wh->rotation())
+		return;
+
+	system("cls");
+
+	this->currpos_x--;
+	this->currpos_y--;
+
+	draw(this->currpos_x, this->currpos_y);
+}
+
+void Car::go_forback(int stop){
+	for (int i = 0; i < stop; i++)
+		go_back();
 }
 
 void Car::go_for(int stop){

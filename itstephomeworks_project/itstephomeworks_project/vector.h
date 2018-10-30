@@ -11,6 +11,10 @@ public:
 	vector(int size);
 	vector(int size, int filler);
 	vector(const vector &vr);
+	vector(vector &&vr);
+
+	vector & operator=(const vector &obj);
+	vector & operator=(vector &&obj);
 
 	bool empty() const;
 	int get_size() const;
@@ -25,9 +29,7 @@ public:
 
 	void fill_arr(int filler);
 
-	int & operator[](int pos) const;
-
-	vector & operator=(const vector &obj);
+	int & operator[](int pos);
 	~vector();
 
 };

@@ -50,6 +50,16 @@ vector::vector(const vector & vr) {
 
 }
 
+vector::vector(vector && vr){
+
+	this->arr = vr.arr;
+	this->size = vr.size;
+
+	vr.arr = nullptr;
+	vr.size = 0;
+
+}
+
 void vector::print() const {
 	for (int i = 0; i < this->size; i++)
 		cout << this->arr[i] << " ";
@@ -146,7 +156,7 @@ void vector::fill_arr(int filler) {
 
 }
 
-int & vector::operator[](int pos) const {
+int & vector::operator[](int pos){
 	return arr[pos];
 }
 
@@ -174,6 +184,22 @@ vector & vector::operator=(const vector & obj){
 
 	for (int i = 0; i < this->size; i++)
 		this->arr[i] = obj.arr[i];
+
+	return *this;
+}
+
+vector & vector::operator=(vector && vr){
+
+	if (this == &vr)
+		return *this;
+
+	this->clear();
+
+	this->arr = vr.arr;
+	this->size = vr.size;
+
+	vr.arr = nullptr;
+	vr.size = 0;
 
 	return *this;
 }

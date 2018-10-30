@@ -12,6 +12,7 @@ public:
 	String(int length);
 	String(const char *str);
 	String(const String &copy_str);
+	String(String &&s);
 
 	int get_length() const;
 	const char get_symbol(int pos) const;

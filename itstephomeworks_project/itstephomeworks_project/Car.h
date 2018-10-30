@@ -49,6 +49,8 @@ public:
 	int get_posy() const;
 	int get_speed() const;
 
+	void repair(int &materials, int level);
+
 	void set_posy(int pos);
 	void set_posx(int pos);
 	void set_speed(int speed);
@@ -56,7 +58,8 @@ public:
 	void draw(int posx, int posy);
 
 	void go();
-	void stop();
+	void go_back();
+	void go_forback(int stop);
 	void go_for(int stop);
 
 	~Car();

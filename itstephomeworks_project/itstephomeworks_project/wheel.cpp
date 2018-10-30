@@ -41,14 +41,22 @@ disk wheel::get_disk()const{
 	return this->d;
 }
 
-void wheel::rotation(){
+bool wheel::rotation(){
 
 	this->r.rotation();
 	this->d.rotation();
 
-	if (this->r.get_stamina() <= 0 && this->d.get_stamina())
-		cout << "Wheel broken\n";
+	if (this->r.get_stamina() <= 0 && this->d.get_stamina() <= 0)
+		return true;
 	
+	return false;
+}
+
+void wheel::repair(int stamina){
+
+	this->d.set_stamina(stamina);
+	this->r.set_stamina(stamina);
+
 }
 
 string wheel::get_info()const{

@@ -30,6 +30,16 @@ String::String(const String &copy_str) {
 
 }
 
+String::String(String && s){
+	
+	this->str = s.str;
+	this->length = s.length;
+
+	s.str = nullptr;
+	s.length = 0;
+
+}
+
 int String::get_length() const {
 	return length;
 }

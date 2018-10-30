@@ -23,7 +23,8 @@ public:
 	rubber get_rubber() const;
 	disk get_disk() const;
 
-	void rotation();
+	bool rotation();
+	void repair(int stamina);
 
 	string get_info() const;
 };
