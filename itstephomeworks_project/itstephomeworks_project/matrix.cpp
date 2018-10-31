@@ -227,3 +227,15 @@ ostream & operator<<(ostream & os, const matrix & mtx){
 	return os;
 
 }
+
+istream & operator>>(istream & is, matrix & mtx){
+
+	for (int i = 0; i < mtx.get_col_size(); i++) {
+
+		for (int j = 0; j < mtx.get_row_size(); j++)
+			cin >> mtx[i][j];
+
+	}
+
+	return is;
+}

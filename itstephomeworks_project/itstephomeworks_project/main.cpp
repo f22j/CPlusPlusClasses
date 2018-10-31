@@ -5,18 +5,10 @@ using namespace std;
 
 int main() {
 
-	matrix mxt(4, 4);
+	matrix mxt(3, 3);
 
-	for (int i = 0; i < 4; i++) {
-
-		for (int j = 0; j < 4; j++)
-			mxt[i][j] = rand()% 100;
-
-	}
-
-	cout << mxt << endl;
-	mxt.transposition();
-	cout << mxt << endl;
+	cin >> mxt;
+	cout << mxt;
 
 	system("pause");
 }

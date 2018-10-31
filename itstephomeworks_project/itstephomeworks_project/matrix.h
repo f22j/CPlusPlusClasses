@@ -41,3 +41,4 @@ public:
 };
 
 ostream &operator<<(ostream & os, const matrix &mtx);
+istream &operator>>(istream & is, matrix &mtx);
