@@ -1,14 +1,13 @@
 #include <iostream>
-#include <conio.h>
-#include "matrix.h"
+#include "vector.h"
 using namespace std;
 
 int main() {
 
-	matrix mxt(3, 3);
+	vector v(10);
+	cin >> v;
 
-	cin >> mxt;
-	cout << mxt;
+	cout << v(1, 5);
 
 	system("pause");
 }

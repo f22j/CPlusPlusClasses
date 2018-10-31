@@ -10,6 +10,7 @@ class engine{
 	int cyl_count;
 
 public:
+
 	engine();
 	engine(float volume, int power, int cyl_count);
 
@@ -24,7 +25,6 @@ public:
 	void set_cylinder(int cyl_count);
 
 	string get_info() const;
-
 };
 
 ostream &operator<<(ostream & os, const engine & en);

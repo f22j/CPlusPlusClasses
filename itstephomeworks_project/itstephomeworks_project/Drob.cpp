@@ -53,6 +53,14 @@ Drob Drob::operator--(){
 	return *this;
 }
 
+Drob Drob::operator=(int drob_value){
+	
+	this->x = drob_value;
+	this->y = 1;
+	
+	return *this;
+}
+
 int Drob::get_y() const{ return y; }
 
 void Drob::set_x(int x){
@@ -72,6 +80,18 @@ int Drob::get_x() const{ return x; }
 
 void Drob::print() const{
 	cout << (float)x / y << endl;
+}
+
+Drob::operator double() const{
+	return this->get_drob();
+}
+
+Drob::operator float() const{
+	return this->get_drob();
+}
+
+Drob::operator int() const{
+	return (int)get_drob();
 }
 
 Drob operator+(const Drob & a, const Drob & b){
@@ -131,3 +151,7 @@ bool operator==(const Drob & a, const Drob & b){
 bool operator!=(const Drob & a, const Drob & b){
 	return a.get_drob() != b.get_drob();
 }
+
+float Drob::get_drob() const{
+	return (float)x / y;
+};

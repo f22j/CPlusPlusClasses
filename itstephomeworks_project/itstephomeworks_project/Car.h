@@ -9,7 +9,7 @@
 class Car{
 
 	int wheels_number, sizex, sizey, currpos_x, currpos_y, speed;
-	engine eng;
+	engine *eng;
 	gearbox gear;
 	wheel *wh;
 	string brand;
@@ -24,7 +24,6 @@ public:
 	Car operator=(const Car &cr);
 
 	void set_engine(float volume, int power, int cyl_count);
-	void set_engine(const engine &eng);
 
 	void set_gearbox(GearboxType type, int shift);
 	void set_gearbox(const gearbox &gb);
@@ -40,7 +39,7 @@ public:
 
 	string get_info() const;
 	wheel get_wheel(int wheel_num) const;
-	engine get_engine() const;
+	engine *get_engine() const;
 	gearbox get_gear() const;
 
 	int get_sizex() const;

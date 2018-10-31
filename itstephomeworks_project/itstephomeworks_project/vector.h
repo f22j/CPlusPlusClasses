@@ -30,6 +30,7 @@ public:
 	void fill_arr(int filler);
 
 	int & operator[](int pos);
+	vector operator()(int start, int end);
 	~vector();
 
 };

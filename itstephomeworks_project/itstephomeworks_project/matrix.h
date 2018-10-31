@@ -35,7 +35,6 @@ public:
 	matrix operator++(int);
 
 	void transposition();
-
 	~matrix();
 
 };
