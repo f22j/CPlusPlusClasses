@@ -18,7 +18,10 @@ public:
 	matrix & operator=(const matrix &mtx);
 	matrix & operator=(matrix &&mtx);
 
-	matrix * operator[](int pos_col);
+	int get_col_size();
+	int get_row_size();
+
+	int * operator[](int pos_col);
 	void print() const;
 	string get_info() const;
 
@@ -36,3 +39,5 @@ public:
 	~matrix();
 
 };
+
+ostream &operator<<(ostream & os, const matrix &mtx);

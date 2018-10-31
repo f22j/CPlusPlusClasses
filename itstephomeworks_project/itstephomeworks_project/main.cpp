@@ -1,39 +1,22 @@
 #include <iostream>
 #include <conio.h>
-#include "Car.h"
+#include "matrix.h"
 using namespace std;
 
 int main() {
 
-	Car cycle(1, 2, 1, GearboxType::AUTO, 4, 1, 10, 10, "steel", 10, 100, 4, "Audi", 0, 0, 6, 4, 50);
-	
-	int mat, mat_level;
+	matrix mxt(4, 4);
 
-	cout << "Write materials:";
-	cin >> mat;
+	for (int i = 0; i < 4; i++) {
 
-	cout << "Write level:";
-	cin >> mat_level;
-
-	while (true) {
-
-		switch(_getch()){
-		
-		case 'd':
-			cycle.go();
-			break;
-
-		case 'a':
-			cycle.go_back();
-			break;
-		
-		case 'r':
-			cycle.repair(mat, mat_level);
-			break;
-
-		}
+		for (int j = 0; j < 4; j++)
+			mxt[i][j] = rand()% 100;
 
 	}
+
+	cout << mxt << endl;
+	mxt.transposition();
+	cout << mxt << endl;
 
 	system("pause");
 }
