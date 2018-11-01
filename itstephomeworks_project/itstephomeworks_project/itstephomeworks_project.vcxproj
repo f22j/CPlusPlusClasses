@@ -125,6 +125,7 @@
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="rubber.cpp" />
     <ClCompile Include="String.cpp" />
+    <ClCompile Include="StringPointer.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="vector.cpp" />
@@ -140,7 +141,9 @@
     <ClInclude Include="Human.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="rubber.h" />
+    <ClInclude Include="single_tone.h" />
     <ClInclude Include="String.h" />
+    <ClInclude Include="StringPointer.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="vector.h" />

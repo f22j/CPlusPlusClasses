@@ -1,9 +1,10 @@
 #include <iostream>
-#include <conio.h>
+#include <string>
 #include <vector>
+#include <memory>
 using namespace std;
 
-int main() {
+int	main(){
 
 	
 

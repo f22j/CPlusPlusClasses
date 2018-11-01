@@ -13,19 +13,25 @@ public:
 	Drob operator-=(const Drob &dr);
 	Drob operator*=(const Drob &dr);
 	Drob operator/=(const Drob &dr);
-	
+
 	Drob operator++();
 	Drob operator--();
+
+	Drob operator=(int drob_value);
 
 	int get_x() const;
 	int get_y() const;
 
 	void set_x(int x);
 	void set_y(int y);
-	
+
 	void print() const;
-	
-	float get_drob() const { return (float)x / y; };
+
+	operator double() const;
+	operator float() const;
+	operator int() const;
+
+	float get_drob()const;
 
 };
 

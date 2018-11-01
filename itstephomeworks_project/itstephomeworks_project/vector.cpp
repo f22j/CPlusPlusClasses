@@ -160,6 +160,19 @@ int & vector::operator[](int pos){
 	return arr[pos];
 }
 
+vector vector::operator()(int start, int end){
+
+	vector tmp(0);
+	for (int i = 0; i < start + end; i++)
+		tmp.push_back(this->arr[i]);
+
+	return tmp;
+}
+
+vector vector::operator-(vector){
+	cout << "!";
+	return *this;
+}
 
 vector & vector::operator=(const vector & obj){
 

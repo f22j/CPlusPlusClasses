@@ -5,10 +5,6 @@ Car::Car(float volume, int power, int cyl_count, GearboxType type,
 	int disk_stamina, int wheeldiametr, int wheels_number, string brand, 
 	int posx, int posy, int sizex, int sizey, int speed){
 
-	eng.set_volume(volume);
-	eng.set_power(power);
-	eng.set_cylinder(cyl_count);
-
 	gear.set_type(type);
 	gear.set_shift(shift);
 
@@ -83,14 +79,10 @@ Car Car::operator=(const Car & cr){
 
 void Car::set_engine(float volume, int power, int cyl_count){
 
-	this->eng.set_volume(volume);
-	this->eng.set_power(power);
-	this->eng.set_cylinder(cyl_count);
+	this->eng->set_volume(volume);
+	this->eng->set_power(power);
+	this->eng->set_cylinder(cyl_count);
 
-}
-
-void Car::set_engine(const engine & eng){
-	this->eng = eng;
 }
 
 void Car::set_gearbox(GearboxType type, int shift){
@@ -161,7 +153,7 @@ void Car::set_sizey(int sizey){
 
 string Car::get_info()const{
 
-	string res = "Brand:" + this->brand + "\nEngine:" + this->eng.get_info() 
+	string res = "Brand:" + this->brand + "\nEngine:" + this->eng->get_info() 
 		+ "Wheels at all:" + to_string(this->wheels_number);
 
 	for (int i = 0; i < this->wheels_number; i++) 
@@ -177,7 +169,7 @@ wheel Car::get_wheel(int wheel_num)const{
 		return this->wh[wheel_num];
 }
 
-engine Car::get_engine() const{
+engine *Car::get_engine() const{
 	return this->eng;
 }
 
@@ -317,11 +309,18 @@ istream & operator>>(istream & is, Car & cr){
 
 	int wheels_num;
 
-	cout << "Engine\n";
-	engine eng_pattern;
-	cin >> eng_pattern;
+	float volume;
+	int power;
+	int cyl_count;
 
-	cr.set_engine(eng_pattern);
+	cout << "Write volume:";
+	cin >> volume;
+
+	cout << "Write power:";
+	cin >> power;
+
+	cout << "Write cylinder count:";
+	cin >> cyl_count;
 
 	cout << "Wheel\nWrite wheel number:";
 	cin >> wheels_num;
