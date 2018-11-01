@@ -169,6 +169,11 @@ vector vector::operator()(int start, int end){
 	return tmp;
 }
 
+vector vector::operator-(vector){
+	cout << "!";
+	return *this;
+}
+
 vector & vector::operator=(const vector & obj){
 
 	if (this == &obj)

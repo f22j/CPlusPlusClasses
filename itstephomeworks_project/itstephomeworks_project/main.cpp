@@ -1,13 +1,12 @@
 #include <iostream>
-#include "vector.h"
+#include <string>
+#include <vector>
+#include <memory>
 using namespace std;
 
-int main() {
+int	main(){
 
-	vector v(10);
-	cin >> v;
-
-	cout << v(1, 5);
+	
 
 	system("pause");
 }
