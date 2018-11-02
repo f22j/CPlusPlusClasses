@@ -2,31 +2,27 @@
 #include <iostream>
 using namespace std;
 
-class Drob_s{
+class Drob_singleton {
 
-	int x, y;
-	Drob_s(int x, int y);
-	Drob_s(const Drob_s&) = delete;
-	void operator=(const Drob_s&) = delete;
+	Drob_singleton();
+	Drob_singleton(const Drob_singleton&) = delete;
+	Drob_singleton operator=(const Drob_singleton&) = delete;
 
-	static Drob_s *instance;
+	static Drob_singleton *instance;
 
 public:
 
-	int get_x() const;
-	int get_y() const;
+	static Drob_singleton* getDrob_singleton() {
 
-	void set_x(int x);
-	void set_y(int y);
+		if (instance == nullptr)
+			instance = new Drob_singleton();
 
-	void print() const;
+		return instance;
 
-	operator double() const;
-	operator float() const;
-	operator int() const;
+	}
 
-	float get_drob()const;
+	~Drob_singleton() {
+		delete instance;
+	}
 
-	static Drob_s *get_instance(int x, int y);
-	~Drob_s();
 };

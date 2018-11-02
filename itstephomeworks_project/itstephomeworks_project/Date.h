@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Date {
@@ -36,6 +37,8 @@ public:
 
 	Date operator--();
 	Date operator--(int);
+
+	operator string();
 	
 };
 

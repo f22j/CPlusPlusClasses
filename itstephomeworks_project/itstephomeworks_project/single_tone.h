@@ -10,13 +10,12 @@ class single_tone{
 
 	static single_tone *instance;
 
-
 public:
 
 	static single_tone* get_instance() {
 
 		if (instance == nullptr)
-			instance = new single_tone;
+			instance = new single_tone();
 
 		return instance;
 
