@@ -5,7 +5,7 @@ void Priority_queue::pop() {
 }
 
 bool Priority_queue::empty() const{
-	return 1;
+	return empty;
 }
 
 int Priority_queue::size() const{
