@@ -123,7 +123,10 @@
     <ClCompile Include="gearbox.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrix.cpp" />
+    <ClCompile Include="Priority_queue.cpp" />
+    <ClCompile Include="Queue.cpp" />
     <ClCompile Include="rubber.cpp" />
+    <ClCompile Include="Stack.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="StringPointer.cpp" />
     <ClCompile Include="Student.cpp" />
@@ -140,8 +143,11 @@
     <ClInclude Include="gearbox.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="matrix.h" />
+    <ClInclude Include="Priority_queue.h" />
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="rubber.h" />
     <ClInclude Include="single_tone.h" />
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="StringPointer.h" />
     <ClInclude Include="Student.h" />

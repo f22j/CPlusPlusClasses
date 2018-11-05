@@ -1,12 +1,11 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <memory>
+#include <map>
 using namespace std;
 
 int	main(){
 
-	
+
 
 	system("pause");
 }
