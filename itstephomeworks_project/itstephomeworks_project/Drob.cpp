@@ -154,4 +154,4 @@ bool operator!=(const Drob & a, const Drob & b){
 
 float Drob::get_drob() const{
 	return (float)x / y;
-};
+}

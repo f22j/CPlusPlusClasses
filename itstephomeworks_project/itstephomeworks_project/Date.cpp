@@ -278,3 +278,18 @@ Date Date::operator--(int) {
 	return tmp;
 
 }
+
+Date::operator string(){
+
+	string date_str;
+
+	if (this->day < 10)
+		date_str += "0";
+	date_str += to_string(this->day) + ":";
+
+	if (this->month < 10)
+		date_str += "0";
+	date_str += to_string(this->month) + ":" + to_string(this->year);
+	
+	return date_str;
+}
