@@ -17,7 +17,7 @@ int Queue::front(){
 }
 
 int Queue::back(){
-	return this->arr[this->arr.size - 1];
+	return this->arr[this->arr.size() - 1];
 }
 
 void Queue::pop(bool toEnd){

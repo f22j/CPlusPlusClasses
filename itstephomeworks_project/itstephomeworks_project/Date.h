@@ -29,8 +29,8 @@ public:
 	void pop_month();
 	void pop_year();
 
-	void print_date()const;
-	bool is_lipe()const;
+	void print_date() const;
+	bool is_lipe() const;
 
 	Date operator++();
 	Date operator++(int);
@@ -39,7 +39,7 @@ public:
 	Date operator--(int);
 
 	operator string();
-	
+
 };
 
 ostream & operator<<(ostream & os, const Date & dt);
@@ -53,3 +53,5 @@ bool operator<=(Date &dt, Date &dt2);
 
 bool operator!=(Date &dt, Date &dt2);
 bool operator==(Date &dt, Date &dt2);
+
+string strftime();

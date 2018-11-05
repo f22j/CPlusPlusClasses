@@ -105,7 +105,7 @@ void Stack::pop() {
 	this->size--;
 }
 
-string Stack::top(){
+const string Stack::top() const{
 	return this->arr[this->size - 1];
 }
 

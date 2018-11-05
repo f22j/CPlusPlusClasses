@@ -249,6 +249,10 @@ bool operator==(Date & dt, Date & dt2){
 
 }
 
+string strftime(){
+	return to_string(system("time /T"));
+}
+
 Date Date::operator++() {
 
 	append_day();
