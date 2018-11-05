@@ -1,35 +1,34 @@
 #include "Priority_queue.h"
 
 void Priority_queue::pop() {
-
+	this->arr.erase(this->arr.begin());
 }
 
 bool Priority_queue::empty() const{
-	return empty;
+	return this->arr.empty();
 }
 
 int Priority_queue::size() const{
-	return 0;
+	return this->arr.size();
 }
 
-pair<string, int>& Priority_queue::front()
-{
-	// TODO: вставьте здесь оператор return
+pair<string, int>& Priority_queue::front(){
+	return this->arr[0];
 }
 
 const pair<string, int>& Priority_queue::front() const {
-	// TODO: вставьте здесь оператор return
+	return this->arr[0];
 }
 
 pair<string, int>& Priority_queue::back() {
-	// TODO: вставьте здесь оператор return
+	return this->arr[this->arr.size() - 1];
 }
 
 const pair<string, int>& Priority_queue::back() const {
-	// TODO: вставьте здесь оператор return
+	return this->arr[this->arr.size() - 1];
 }
 
-void Priority_queue::push(string & doc, int & priority) {
+void Priority_queue::push(const string & doc, int priority) {
 
 	for (int pos = 0; pos < this->arr.size(); pos++) {
 

@@ -18,6 +18,6 @@ public:
 	pair<string, int> &back();
 	const pair<string, int> &back() const;
 
-	void push(string &doc, int &priority);
+	void push(const string &doc, int priority);
 
 };
