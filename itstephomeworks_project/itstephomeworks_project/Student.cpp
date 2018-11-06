@@ -1,6 +1,6 @@
 #include "Student.h"
 
-Student::Student(String &name, String &group, Date &birth_date, vector &marks) {
+Student::Student(String &name, String &group, Date &birth_date, vector_ &marks) {
 
 	set_name(name);
 	set_group(group);
@@ -27,7 +27,7 @@ void Student::set_birth(Date &birth_date){
 	this->birth_date = birth_date;
 }
 
-void Student::set_marks(vector &marks){
+void Student::set_marks(vector_ &marks){
 	this->marks = marks;
 }
 
@@ -50,7 +50,7 @@ const char * Student::get_group() const{
 	return this->group.get_string();
 }
 
-vector Student::get_marks() const{
+vector_ Student::get_marks() const{
 	return this->marks;
 }
 

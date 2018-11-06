@@ -2,19 +2,21 @@
 #include <iostream>
 using namespace std;
 
-class vector {
+template<class T>
+class Vector {
 
-	int size, *arr;
+	T *arr;
+	int size;
 
 public:
-	vector();
-	vector(int size);
-	vector(int size, int filler);
-	vector(const vector &vr);
-	vector(vector &&vr);
+	Vector(int size);
 
-	vector & operator=(const vector &obj);
-	vector & operator=(vector &&obj);
+	Vector(int size, T filler);
+	Vector(const Vector &vr);
+	Vector(Vector &&vr);
+
+	Vector & operator=(const Vector &obj);
+	Vector & operator=(Vector &&obj);
 
 	bool empty() const;
 	int get_size() const;
@@ -24,17 +26,19 @@ public:
 	void insert(int pos, int number);
 	void erase(int pos);
 
-	void push_back(int number);
+	void push_back(T number);
 	void pop_back();
 
-	void fill_arr(int filler);
+	void fill_arr(T filler);
 
 	int & operator[](int pos);
-	vector operator()(int start, int end);
-	vector operator-(vector);
-	~vector();
+	Vector operator()(int start, int end);
+	~Vector();
 
 };
 
-ostream & operator<<(ostream &os, const vector &vr);
-istream & operator>>(istream &is, vector &vr);
+template<typename T>
+ostream & operator<<(ostream &os, const Vector<T> &vr);
+
+template<typename T>
+istream & operator>>(istream &is, Vector<T> &vr);

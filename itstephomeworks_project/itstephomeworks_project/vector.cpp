@@ -1,91 +1,129 @@
-#include "vector.h"
+#include "Vector.h"
 
-vector::vector() {
+template<class T>
+Vector<T>::Vector(int size) {
 
-	this->size = 0;
-	this->arr = nullptr;
+	if (size > 0)
+		this->size = size;
+	else {
 
-}
-
-vector::vector(int size = 0) {
-
-	if (size < 0) {
-		this->size = 0;
-		arr = nullptr;
-	}
-
-	this->size = size;
-	arr = new int[size];
-
-}
-
-vector::vector(int size, int filler){
-
-	if (size < 0) {
-		this->size = 0;
-		arr = nullptr;
-	}
-
-	this->size = size;
-	arr = new int[size];
-	fill_arr(filler);
-
-}
-
-vector::vector(const vector & vr) {
-
-	if (vr.size == 0) {
-
-		this->size = 0;
-		this->arr = nullptr;
+		throw exception("Wrong size!");
 		return;
 
 	}
 
-	this->size = vr.size;
-	this->arr = new int[this->size];
+	this->arr = new T[this->size];
 
-	for (int i = 0; i < this->size; i++)
+}
+
+template<class T>
+Vector<T>::Vector(int size, T filler) {
+
+	if (size > 0)
+		this->size = size;
+	else {
+
+		throw exception("Wrong size!");
+		return;
+
+	}
+
+	this->arr = new T[this->size];
+
+	for (size_t i = 0; i < this->size; i++)
+		this->arr = filler;
+
+}
+
+template<class T>
+Vector<T>::Vector(const Vector & vr) {
+
+	this->size = vr.size;
+
+	if (vr.size > 0)
+		this->arr = new T[vr.size];
+
+	for (size_t i = 0; i < vr.size; i++)
 		this->arr[i] = vr.arr[i];
 
 }
 
-vector::vector(vector && vr){
+template<class T>
+Vector<T>::Vector(Vector && vr) {
 
-	this->arr = vr.arr;
 	this->size = vr.size;
+	this->arr = vr.arr;
 
-	vr.arr = nullptr;
 	vr.size = 0;
+	vr.arr = nullptr;
 
 }
 
-void vector::print() const {
-	for (int i = 0; i < this->size; i++)
+template<class T>
+Vector<T> & Vector<T>::operator=(const Vector & obj) {
+
+	if (&obj == this)
+		return;
+
+	this->size = obj.size;
+	this->arr = new T[obj.size];
+
+	for (size_t i = 0; i < this->size; i++)
+		this->arr[i] = obj.arr[i];
+
+	return *this;
+}
+
+template<class T>
+Vector<T> & Vector<T>::operator=(Vector && obj) {
+
+	if (&obj == this)
+		return;
+
+	this->size = obj.size;
+	this->arr = new T[obj.size];
+
+	for (size_t i = 0; i < this->size; i++)
+		this->arr[i] = obj.arr[i];
+
+	obj.arr = nullptr;
+	obj.size = 0;
+
+	return *this;
+}
+
+template<class T>
+bool Vector<T>::empty() const {
+	return this->arr == nullptr;
+}
+
+template<class T>
+int Vector<T>::get_size() const {
+	return this->size;
+}
+
+template<class T>
+void Vector<T>::clear() {
+	this->~Vector();
+}
+
+template<class T>
+void Vector<T>::print() const {
+
+	for (size_t i = 0; i < this->size; i++)
 		cout << this->arr[i] << " ";
 
 	cout << endl;
 }
 
-bool vector::empty() const {
-	return this->size == 0;
-}
-
-int vector::get_size() const {
-	return this->size;
-}
-
-void vector::clear() {
-	this->~vector();
-}
-
-void vector::insert(int pos, int number) {
+template<class T>
+void Vector<T>::insert(int pos, int number) {
 
 	if (this->arr == nullptr && this->size == 0 && pos > this->size && pos < 0)
 		return;
 
 	this->size++;
-	int *tmp = new int[this->size];
+	T *tmp = new T[this->size];
 
 	for (int i = 0; i < pos; i++)
 		tmp[i] = this->arr[i];
@@ -97,19 +135,17 @@ void vector::insert(int pos, int number) {
 
 	delete[] this->arr;
 
-	for (int i = 0; i < this->size - 1; i++)
-		this->arr[i] = tmp[i];
-
-	delete[] tmp;
+	this->arr = tmp;
 }
 
-void vector::erase(int pos) {
+template<class T>
+void Vector<T>::erase(int pos) {
 
 	if (pos > this->size || pos < 0 || arr == nullptr)
 		return;
 
 	this->size--;
-	int *tmp = new int[this->size + 1];
+	T *tmp = new T[this->size + 1];
 
 	for (int i = 0; i < pos; i++)
 		tmp[i] = this->arr[i];
@@ -119,27 +155,29 @@ void vector::erase(int pos) {
 
 	delete[] this->arr;
 	arr = tmp;
+
 }
 
-void vector::push_back(int number) {
+template<class T>
+void Vector<T>::push_back(T number) {
 
 	this->size++;
+	T *tmp = new T[this->size];
 
-	int *tmp = new int[this->size];
-
-	for (int i = 0; i < this->size - 1; i++) 
-		tmp[i] = arr[i];
+	for (int i = 0; i < this->size - 1; i++)
+		tmp[i] = this->arr[i];
 
 	tmp[this->size - 1] = number;
 
 	delete[] arr;
-	arr = tmp;
+	this->arr = tmp;
 
 }
 
-void vector::pop_back() {
+template<class T>
+void Vector<T>::pop_back() {
 
-	int *tmp = new int[--this->size];
+	T *tmp = new T[--this->size];
 
 	for (int i = 0; i < this->size; i++)
 		tmp[i] = this->arr[i];
@@ -149,102 +187,35 @@ void vector::pop_back() {
 
 }
 
-void vector::fill_arr(int filler) {
-
-	for (int i = 0; i < this->size; i++)
-		this->arr[i] = filler;
-
+template<class T>
+void Vector<T>::fill_arr(T filler) {
 }
 
-int & vector::operator[](int pos){
-	return arr[pos];
+template<class T>
+int & Vector<T>::operator[](int pos) {
+	return this->arr[pos];
 }
 
-vector vector::operator()(int start, int end){
+template<class T>
+Vector<T> Vector<T>::operator()(int start, int end) {
+	
+	T tmp[start + end];
 
-	vector tmp(0);
-	for (int i = 0; i < start + end; i++)
-		tmp.push_back(this->arr[i]);
+	for (size_t i = start; i < end; i++)
+		tmp[i] = this->arr[i];
 
 	return tmp;
 }
 
-vector vector::operator-(vector){
-	cout << "!";
-	return *this;
-}
+template<class T>
+Vector<T>::~Vector() {
 
-vector & vector::operator=(const vector & obj){
-
-	if (this == &obj)
-		return *this;
-
-	if (this->size == obj.size) {
-
-		for (int i = 0; i < this->size; i++)
-			this->arr[i] = obj.arr[i];
-		return *this;
-
-	}
-
-	this->~vector();
-
-	if (obj.size == 0)
-		return *this;
-
-	this->size = obj.size;
-	this->arr = new int[this->size];
-
-	for (int i = 0; i < this->size; i++)
-		this->arr[i] = obj.arr[i];
-
-	return *this;
-}
-
-vector & vector::operator=(vector && vr){
-
-	if (this == &vr)
-		return *this;
-
-	this->clear();
-
-	this->arr = vr.arr;
-	this->size = vr.size;
-
-	vr.arr = nullptr;
-	vr.size = 0;
-
-	return *this;
-}
-
-vector::~vector(){
-
-	if (this->arr != nullptr) {
-
-		delete[] this->arr;
-		this->arr = nullptr;
-		this->size = 0;
-
-	}
+	delete[] this->arr;
+	this->size = 0;
 
 }
 
-ostream & operator<<(ostream & os, const vector & vr){
-
-	vr.print();
-	return os;
-
-}
-
-istream & operator>>(istream & is, vector & vr) {
-
-	for (int i = 0; i < vr.get_size(); i++) {
-
-		int x;
-		cin >> x;
-		vr[i] = x;
-
-	}
-
-	return is;
+template<typename T>
+istream & operator>>(istream & is, Vector<T>& vr) {
+	// TODO: вставьте здесь оператор return
 }
