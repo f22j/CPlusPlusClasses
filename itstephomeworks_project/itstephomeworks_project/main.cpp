@@ -1,8 +1,7 @@
 #include <iostream>
 #include <string>
-#include <list>
+#include "List.h"
 using namespace std;
-
 
 int replace_wrong(string &str) {
 

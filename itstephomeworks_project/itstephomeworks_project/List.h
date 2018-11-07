@@ -6,7 +6,8 @@ template<class T>
 struct Element {
 
 	T obj;
-	Element<T> *next = *prev = nullptr;
+	Element<T> *next = nullptr;
+	Element<T> *prev = nullptr;
 
 };
 
@@ -17,7 +18,8 @@ class List{
 	int size = 0;
 
 public:
-	
+
+	List() = default;
 	List(const List<T> &obj);
 	List(List<T> &&obj);
 
@@ -45,20 +47,40 @@ public:
 
 template<class T>
 inline List<T>::List(const List<T>& obj){
+
+
+
 }
 
 template<class T>
 inline List<T>::List(List<T>&& obj){
+
+	swap(this->head, obj);
+	swap(this->tail, obj);
+	swap(this->size, obj.size);
+
 }
 
 template<class T>
 inline List<T>& List<T>::operator=(const List<T>& obj){
-	// TODO: вставьте здесь оператор return
+	Element<T> *tmp = obj.head;
+
+	while (tmp != nullptr) {
+
+
+
+	}
+
 }
 
 template<class T>
 inline List<T>& List<T>::operator=(List<T>&& obj){
-	// TODO: вставьте здесь оператор return
+
+	swap(this->head, obj);
+	swap(this->tail, obj);
+	swap(this->size, obj.size);
+	return *this;
+
 }
 
 template<class T>
@@ -85,18 +107,95 @@ inline void List<T>::push_back(const T & obj){
 
 template<class T>
 inline void List<T>::push_back(T && obj){
+
+	Element<T> *new_element = new Element<T>;
+	new_element->obj = obj;
+
+	if (head == nullptr) {
+
+		head = tail = new_element;
+		size = 1;
+
+	}else{
+
+		tail->next = new_element;
+		new_element->prev = tail;
+		tail = new_element;
+		size++;
+
+	}
+
 }
 
 template<class T>
 inline void List<T>::push_front(const T && obj){
+
+	Element<T> *new_element= new Element<T>;
+	new_element->obj = obj;
+
+	if(this->head == nullptr){
+
+		this->head = this->tail = new_element;
+		size = 1;
+
+	}else {
+
+		new_element->next = this->head;
+		this->head->prev = new_element;
+		this->head = new_element;
+
+		this->size++;
+	}
+
 }
 
 template<class T>
 inline void List<T>::pop_back(){
+
+	if (head == nullptr)
+		return;
+
+	if (head == tail) {
+
+		this->head = this->tail = nullptr;
+		delete this->head;
+		size = 0;
+
+	}else {
+
+		this->tail = this->tail->prev;
+		delete this->tail->next;
+
+		tail->next = nullptr;
+		size--;
+
+	}
+
 }
 
 template<class T>
-inline void List<T>::pop_front(){
+inline void List<T>::pop_front() {
+
+	if (head == nullptr)
+		return;
+
+	if (head == tail) {
+
+		this->head = this->tail = nullptr;
+		delete this->head;
+		size = 0;
+	
+	}else{
+
+
+		this->tail = this->tail->prev;
+		delete this->tail->next;
+
+		tail->next = nullptr;
+		size--;
+
+	}
+
 }
 
 template<class T>
@@ -114,4 +213,14 @@ inline void List<T>::insert(const T & obj){
 
 template<class T>
 inline void List<T>::insert(T && obj){
+}
+
+template<class T>
+inline void List<T>::erase(int pos)
+{
+}
+
+template<class T>
+inline List<T>::~List()
+{
 }
