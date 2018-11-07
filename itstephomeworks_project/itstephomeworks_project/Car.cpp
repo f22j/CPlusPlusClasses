@@ -167,6 +167,8 @@ wheel Car::get_wheel(int wheel_num)const{
 	
 	if(wheel_num < wheels_number) 
 		return this->wh[wheel_num];
+	
+	throw exception("List index out of range!");
 }
 
 engine *Car::get_engine() const{

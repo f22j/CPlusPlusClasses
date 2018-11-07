@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-template<class T>
+template<typename T>
 struct Element {
 	T obj;
 	Element<T> *next;

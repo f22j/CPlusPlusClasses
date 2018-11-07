@@ -1,6 +1,6 @@
 #include "LinkedList.h"
 
-template<class T>
+template<typename T>
 LinkedList<T>::LinkedList(){
 
 	this->head = nullptr;
@@ -8,8 +8,9 @@ LinkedList<T>::LinkedList(){
 
 }
 
-template<class T>
+template<typename T>
 void LinkedList<T>::push_back(const T & elem){
+
 	T *tmp = this->head;
 
 	while (tmp->next != nullptr)
@@ -24,7 +25,7 @@ void LinkedList<T>::push_back(const T & elem){
 
 }
 
-template<class T>
+template<typename T>
 void LinkedList<T>::insert(int pos, const T & elem){
 
 	if (pos < 0 || pos > this->size)
@@ -54,11 +55,30 @@ void LinkedList<T>::insert(int pos, const T & elem){
 
 }
 
-template<class T>
+template<typename T>
 void LinkedList<T>::erase(int pos){
+
+	if (pos < 0 || pos > this->size)
+		throw exception("List index out of range");
+
+	else if (pos == 0)
+		this->pop_front();
+
+	else if (pos == this->size - 1)
+		this->pop_back();
+
+	else {
+
+		for (size_t i = 0; i < pos - 1; i++)
+			tmp = tmp->next;
+
+		this->size++;
+
+	}
+
 }
 
-template<class T>
+template<typename T>
 void LinkedList<T>::pop_front(){
 
 	if (!this->head)
@@ -72,7 +92,7 @@ void LinkedList<T>::pop_front(){
 
 }
 
-template<class T>
+template<typename T>
 void LinkedList<T>::pop_back(){
 
 	T *tmp = this->head;
@@ -85,7 +105,7 @@ void LinkedList<T>::pop_back(){
 
 }
 
-template<class T>
+template<typename T>
 void LinkedList<T>::push_front(const T & elem){
 
 	this->size++;
@@ -105,7 +125,10 @@ ostream & operator<<(ostream & os, const LinkedList<T>& lst) {
 
 	while (tmp->next != nullptr) {
 
-		cout << tmp->obj << " ";
+		try {
+			cout << tmp->obj << " ";
+		}catch (int i) {}
+
 		tmp = tmp->next;
 
 	}
