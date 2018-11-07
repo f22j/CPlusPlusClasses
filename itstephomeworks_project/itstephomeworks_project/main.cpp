@@ -1,30 +1,27 @@
 #include <iostream>
 #include <string>
+#include <list>
 using namespace std;
 
-string vowels = "aeuio";
-int find_wrong(const string &str);
 
-void wrongs_eraser(string &str) {
+int replace_wrong(string &str) {
 
-	int wrong_pos = find_wrong(str);
-
-	if (wrong_pos == -1)
-		return;
-
-	str.insert(wrong_pos + 1, " ");
-}
-
-int find_wrong(const string &str) {
-
+	string vowels = "aeuio";
 	int matched = 0;
+	char prev = ' ';
+
 	for (int i = 0; i < str.length(); i++){
 
-		int wrong_pos = vowels.find(str[i]);
-		if (wrong_pos == -1 && (str[i] != str[i + 1] || str[i] != str[i - 1])){
+		if (vowels.find(str[i]) == string::npos && prev != str[i]){
+			prev = str[i];
 
-			if (++matched >= 3)
-				return i;
+			if (++matched >= 3) {
+
+				str.insert(i, " ");
+				i += 2;
+				matched = 0;
+
+			}
 
 		}
 
@@ -37,7 +34,7 @@ int	main() {
 	string str;
 	getline(cin, str);
 
-	wrongs_eraser(str);
+	replace_wrong(str);
 	cout << str << endl;
 
 	system("pause");
