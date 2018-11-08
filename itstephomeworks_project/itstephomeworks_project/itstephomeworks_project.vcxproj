@@ -148,6 +148,7 @@
     <ClInclude Include="matrix.h" />
     <ClInclude Include="Priority_queue.h" />
     <ClInclude Include="Queue.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="rubber.h" />
     <ClInclude Include="single_tone.h" />
     <ClInclude Include="Stack.h" />
@@ -158,6 +159,9 @@
     <ClInclude Include="Vector.h" />
     <ClInclude Include="vector_.h" />
     <ClInclude Include="wheel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="itstephomeworks_project.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
