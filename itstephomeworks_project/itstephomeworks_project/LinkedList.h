@@ -21,6 +21,7 @@ public:
 	void push_back(const T &elem);
 
 	void insert(int pos, const T &elem);
+	void insert(int pos, T &&elem);
 	void erase(int pos);
 
 	void pop_front();
@@ -92,6 +93,37 @@ void LinkedList<T>::insert(int pos, const T & elem) {
 }
 
 template<typename T>
+void LinkedList<T>::insert(int pos, T && elem) {
+
+	if (pos < 0 || pos > this->size)
+		return;
+
+	else if (pos == 0)
+		this->push_front(elem);
+
+	else if (pos == this->size)
+		this->push_back(elem);
+
+	else {
+
+		Element<T> *tmp;
+		for (size_t i = 0; i < pos - 1; i++)
+			tmp = tmp->next;
+
+		Element<T> *new_elem = new Element<T>;
+
+		new_elem->obj = elem;
+		new_elem->next = nullptr;
+
+		tmp->next = new_elem;
+		this->size++;
+		elem = nullptr;
+
+	}
+
+}
+
+template<typename T>
 void LinkedList<T>::erase(int pos) {
 
 	if (pos < 0 || pos > this->size)
@@ -108,7 +140,9 @@ void LinkedList<T>::erase(int pos) {
 		for (size_t i = 0; i < pos - 1; i++)
 			tmp = tmp->next;
 
-		this->size++;
+		tmp->next = tmp->next->next;
+		delete tmp;
+		this->size--;
 
 	}
 
@@ -163,8 +197,9 @@ ostream & operator<<(ostream & os, const LinkedList<T>& lst) {
 
 		try {
 			cout << tmp->obj << " ";
+		}catch (int i){
+			cout << "Cant print element:(\n";
 		}
-		catch (int i) {}
 
 		tmp = tmp->next;
 
