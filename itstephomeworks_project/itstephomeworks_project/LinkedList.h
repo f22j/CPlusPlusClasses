@@ -43,10 +43,14 @@ LinkedList<T>::LinkedList() {
 template<typename T>
 void LinkedList<T>::push_back(const T & elem) {
 
-	T *tmp = this->head;
+	Element<T> *tmp = this->head;
 
-	while (tmp->next != nullptr)
-		tmp = tmp->next;
+	if (this->head != nullptr) {
+
+		while (tmp->next != nullptr)
+			tmp = tmp->next;
+
+	}
 
 	Element<T> *tmp_elem = new Element<T>;
 	tmp_elem->obj = elem;
