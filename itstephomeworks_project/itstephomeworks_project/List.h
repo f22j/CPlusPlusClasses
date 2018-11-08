@@ -14,22 +14,24 @@ struct Element {
 template<class T>
 class List{
 
-	Element<T> *head = *tail = nullptr;
-	int size = 0;
+	Element<T> *head;
+	Element<T> *tail;
+	int size;
 
 public:
 
-	List() = default;
+	List();
 	List(const List<T> &obj);
 	List(List<T> &&obj);
 
 	List<T> &operator=(const List<T> &obj);
 	List<T> &operator=(List<T> &&obj);
+	T &operator[](int pos);
 
 	void push_back(const T &obj);
 	void push_back(T &&obj);
 
-	void push_front(const T &&obj);
+	void push_front(const T &obj);
 	void push_front(T &&obj);
 
 	void pop_back();
@@ -37,18 +39,23 @@ public:
 
 	bool empty() const;
 	void clear();
-	
-	void insert(const T &obj);
-	void insert(T &&obj);
+
+	void insert(const T &obj, size_t pos);
+	void insert(T &&obj, size_t pos);
 
 	void erase(int pos);
 	~List();
 };
 
 template<class T>
-inline List<T>::List(const List<T>& obj){
+inline List<T>::List(){
+	this->head = nullptr;
+	this->tail = nullptr;
+	this->size = 0;
+}
 
-my
+template<class T>
+inline List<T>::List(const List<T>& obj){
 
 }
 
@@ -84,6 +91,30 @@ inline List<T>& List<T>::operator=(List<T>&& obj){
 }
 
 template<class T>
+inline T& List<T>::operator[](int pos){
+
+	Element<T> *tmp;
+
+	if(pos > this->size / 2){
+
+		tmp = this->head;
+
+		for (size_t i = 0; i < pos; i++)
+			tmp = tmp->next;
+
+	}else{
+
+		tmp = this->tail;
+
+		for (size_t i = this->size; i >= pos; i--)
+			tmp = tmp->prev;
+
+	}
+
+	return tmp->obj;
+}
+
+template<class T>
 inline void List<T>::push_back(const T & obj){
 
 	Element<T> *new_element = new Element<T>;
@@ -91,7 +122,8 @@ inline void List<T>::push_back(const T & obj){
 
 	if (head == nullptr) {
 
-		head = tail = new_element;
+		head = new_element;
+		tail = new_element;
 		size = 1;
 
 	}else {
@@ -128,17 +160,42 @@ inline void List<T>::push_back(T && obj){
 }
 
 template<class T>
-inline void List<T>::push_front(const T && obj){
+inline void List<T>::push_front(const T & obj){
 
 	Element<T> *new_element= new Element<T>;
 	new_element->obj = obj;
 
 	if(this->head == nullptr){
 
-		this->head = this->tail = new_element;
+		this->head = new_element;
+		this->tail = new_element;
 		size = 1;
 
 	}else {
+
+		new_element->next = this->head;
+		this->head->prev = new_element;
+		this->head = new_element;
+
+		this->size++;
+	}
+
+}
+
+template<class T>
+inline void List<T>::push_front(T && obj) {
+
+	Element<T> *new_element = new Element<T>;
+	new_element->obj = obj;
+
+	if (this->head == nullptr) {
+
+		this->head = new_element;
+		this->tail = new_element;
+		size = 1;
+
+	}
+	else {
 
 		new_element->next = this->head;
 		this->head->prev = new_element;
@@ -208,19 +265,125 @@ inline void List<T>::clear(){
 }
 
 template<class T>
-inline void List<T>::insert(const T & obj){
+inline void List<T>::insert(const T & obj, size_t pos){
+
+	if (pos > this->size)
+		return;
+
+	else if (pos == 0)
+		push_front(obj);
+
+	else if (pos == this->size)
+		push_back(obj);
+
+	else {
+
+		Element<T> *tmp;
+
+		if (pos > this->size / 2) {
+
+			tmp = this->tail;
+			for (size_t i = this->size; i >= pos; i--)
+				tmp = tmp->prev;
+
+		}else{
+
+			tmp = this->head;
+			for (size_t i = 0; i < pos; i++)
+				tmp = tmp->next;
+
+		}
+
+		Element<T> *new_element = new Element<T>;
+		new_element->obj = obj;
+
+		new_element->next = tmp->next;
+		tmp->next = new_element;
+		new_element->prev = tmp;
+		this->size++;
+
+	}
+
 }
 
 template<class T>
-inline void List<T>::insert(T && obj){
+inline void List<T>::insert(T && obj, size_t pos) {
+
+	if (pos > this->size)
+		return;
+
+	else if (pos == 0)
+		push_front(obj);
+
+	else if (pos == this->size)
+		push_back(obj);
+
+	else {
+
+		Element<T> *tmp;
+
+		if (pos > this->size / 2) {
+
+			tmp = this->tail;
+			for (size_t i = this->size; i >= pos; i--)
+				tmp = tmp->prev;
+
+		}
+		else {
+
+			tmp = this->head;
+			for (size_t i = 0; i < pos; i++)
+				tmp = tmp->next;
+
+		}
+
+		Element<T> *new_element = new Element<T>;
+		new_element->obj = obj;
+
+		new_element->next = tmp->next;
+		tmp->next = new_element;
+		new_element->prev = tmp;
+		this->size++;
+
+	}
+
+}
+template<class T>
+inline void List<T>::erase(int pos){
+
+	if (pos == this->size)
+		pop_back();
+
+	else if (pos == 0)
+		pop_front();
+
+	else {
+
+		Element<T> *tmp;
+
+		if (pos < size / 2) {
+
+			tmp = this->head;
+			for (size_t i = 0; i < pos; i++)
+				tmp = tmp->next;
+
+		}else {
+
+			tmp = this->tail;
+			for (size_t i = this->size; i >= pos; i--)
+				tmp = tmp->prev;
+
+		}
+
+		tmp->prev->next = tmp->next;
+		tmp->next->prev = tmp->prev;
+		this->size--;
+		delete tmp;
+
+	}
+
 }
 
 template<class T>
-inline void List<T>::erase(int pos)
-{
-}
-
-template<class T>
-inline List<T>::~List()
-{
+inline List<T>::~List(){
 }
