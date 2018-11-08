@@ -48,7 +48,7 @@ public:
 template<class T>
 inline List<T>::List(const List<T>& obj){
 
-
+my
 
 }
 
