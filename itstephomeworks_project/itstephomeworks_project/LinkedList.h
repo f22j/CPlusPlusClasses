@@ -21,11 +21,26 @@ public:
 	void push_back(const T &elem);
 
 	void insert(int pos, const T &elem);
+	void insert(int pos, T &&elem);
 	void erase(int pos);
 
 	void pop_front();
 	void pop_back();
 
+	bool empty() const;
+	int getSize() const;
+
+	T& front();
+	const T& front()const;
+
+	T& back();
+	const T& back()const;
+
+	void clear();
+	void operator+=(const T&obj);
+	void reverse();
+
+	~LinkedList();
 };
 
 template<typename T>
@@ -92,6 +107,37 @@ void LinkedList<T>::insert(int pos, const T & elem) {
 }
 
 template<typename T>
+void LinkedList<T>::insert(int pos, T && elem) {
+
+	if (pos < 0 || pos > this->size)
+		return;
+
+	else if (pos == 0)
+		this->push_front(elem);
+
+	else if (pos == this->size)
+		this->push_back(elem);
+
+	else {
+
+		Element<T> *tmp;
+		for (size_t i = 0; i < pos - 1; i++)
+			tmp = tmp->next;
+
+		Element<T> *new_elem = new Element<T>;
+
+		new_elem->obj = elem;
+		new_elem->next = nullptr;
+
+		tmp->next = new_elem;
+		this->size++;
+		elem = nullptr;
+
+	}
+
+}
+
+template<typename T>
 void LinkedList<T>::erase(int pos) {
 
 	if (pos < 0 || pos > this->size)
@@ -108,7 +154,9 @@ void LinkedList<T>::erase(int pos) {
 		for (size_t i = 0; i < pos - 1; i++)
 			tmp = tmp->next;
 
-		this->size++;
+		tmp->next = tmp->next->next;
+		delete tmp;
+		this->size--;
 
 	}
 
@@ -141,6 +189,71 @@ void LinkedList<T>::pop_back() {
 
 }
 
+template<class T>
+inline bool LinkedList<T>::empty() const{
+	return this->head == nullptr;
+}
+
+template<class T>
+inline int LinkedList<T>::getSize() const{
+	return this->size;
+}
+
+template<class T>
+inline T & LinkedList<T>::front(){
+	return this->head;
+}
+
+template<class T>
+inline const T & LinkedList<T>::front() const{
+	return this->head;
+}
+
+template<class T>
+inline T & LinkedList<T>::back(){
+	
+	Element<T> *tmp = this->head;
+
+	while (tmp->next != nullptr)
+		tmp = tmp->next;
+
+	return tmp;
+}
+
+template<class T>
+inline const T & LinkedList<T>::back() const{
+	Element<T> *tmp = this->head;
+
+	while (tmp->next != nullptr)
+		tmp = tmp->next;
+
+	return tmp;
+}
+
+template<class T>
+inline void LinkedList<T>::clear(){
+	this->~LinkedList();
+}
+
+template<class T>
+inline void LinkedList<T>::operator+=(const T & obj){
+	this->push_back(obj);
+}
+
+template<class T>
+inline void LinkedList<T>::reverse(){
+
+	Element<T> *last = this->head;
+
+	while (last->next != nullptr)
+		last = last->next;
+
+	Element<T> *tmp = this->head;
+	this->head = last;
+	last = tmp;
+
+}
+
 template<typename T>
 void LinkedList<T>::push_front(const T & elem) {
 
@@ -163,12 +276,27 @@ ostream & operator<<(ostream & os, const LinkedList<T>& lst) {
 
 		try {
 			cout << tmp->obj << " ";
+		}catch (int i){
+			cout << "Cant print element:(\n";
 		}
-		catch (int i) {}
 
 		tmp = tmp->next;
 
 	}
 
 	return os;
+}
+
+template<class T>
+inline LinkedList<T>::~LinkedList(){
+
+	Element<T> *tmp = this->head;
+
+	while (tmp->next != nullptr) {
+
+		this->pop_front();
+		tmp = tmp->next;
+
+	}
+
 }
