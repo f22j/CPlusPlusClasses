@@ -230,7 +230,7 @@ inline void BinaryTree<T, T2>::erase(T & key){
 			tmp = tmp->left;
 		else
 			tmp = tmp->right;
-
+		
 	}
 
 }
