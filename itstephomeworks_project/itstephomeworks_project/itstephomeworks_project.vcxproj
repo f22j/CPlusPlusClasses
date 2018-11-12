@@ -136,6 +136,7 @@
     <ClCompile Include="wheel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="disk.h" />
