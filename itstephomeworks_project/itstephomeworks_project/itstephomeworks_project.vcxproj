@@ -133,9 +133,11 @@
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="vector_.cpp" />
+    <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="wheel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="disk.h" />
@@ -158,6 +160,7 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="vector_.h" />
+    <ClInclude Include="Vehicle.h" />
     <ClInclude Include="wheel.h" />
   </ItemGroup>
   <ItemGroup>
