@@ -43,7 +43,9 @@ public:
 	void clear();
 	void swap(T &key1, T key2);
 
+	void deleteNode(Node<T, T2> *nd);
 	void erase(T &key);
+
 	void insert(T &key, T2 & obj);
 	void insert(T && key, T2 && obj);
 
@@ -219,19 +221,19 @@ inline void BinaryTree<T, T2>::swap(T & key1, T key2){
 }
 
 template<class T, class T2>
+inline void BinaryTree<T, T2>::deleteNode(Node<T, T2> *nd){
+
+	if (nd == nullptr)
+		return;
+
+	
+
+}
+
+template<class T, class T2>
 inline void BinaryTree<T, T2>::erase(T & key){
 
-	Node<T, T2> *tmp = this->head, *parent = nullptr;
-
-	while (tmp != nullptr) {
-
-		parent = tmp;
-		if (key < tmp->key)
-			tmp = tmp->left;
-		else
-			tmp = tmp->right;
-		
-	}
+	while
 
 }
 

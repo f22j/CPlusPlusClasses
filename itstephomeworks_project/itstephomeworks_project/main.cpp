@@ -1,16 +1,11 @@
 #include <iostream>
-#include <string>
-#include "BinaryTree.h"
+#include <conio.h>
+#include "Car.h"
 using namespace std;
 
-int main() {
+void main() {
 
-	while (true) {
-
-		BinaryTree<int, string> tr;
-		tr.insert(10, "ASD");
-
-	}
+	
 
 	system("pause");
 }
