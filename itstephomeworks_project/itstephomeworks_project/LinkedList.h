@@ -38,7 +38,9 @@ public:
 
 	void clear();
 	void operator+=(const T&obj);
+	
 	void reverse();
+	void print() const;
 
 	~LinkedList();
 };
@@ -57,23 +59,23 @@ LinkedList<T>::LinkedList() {
 
 template<typename T>
 void LinkedList<T>::push_back(const T & elem) {
+	
+	Element<T> *new_elem = new Element<T>;
+	new_elem->obj = elem;
+	new_elem->next = nullptr;
 
-	Element<T> *tmp = this->head;
+	if (this->head != nullptr) {	 
 
-	if (this->head != nullptr) {
-
-		while (tmp->next != nullptr)
+		Element<T> *tmp = this->head;
+		while (tmp->next != nullptr) 
 			tmp = tmp->next;
 
-	}
+		tmp->next = new_elem;
 
-	Element<T> *tmp_elem = new Element<T>;
-	tmp_elem->obj = elem;
-	tmp_elem->next = nullptr;
+	}else
+		this->head = new_elem;
 
-	tmp->next = tmp_elem;
 	this->size++;
-
 }
 
 template<typename T>
@@ -240,17 +242,47 @@ inline void LinkedList<T>::operator+=(const T & obj){
 	this->push_back(obj);
 }
 
+
 template<class T>
-inline void LinkedList<T>::reverse(){
+inline void LinkedList<T>::reverse() {
 
-	Element<T> *last = this->head;
+	Element<T> *last_element = this->head;
+	Element<T> *first_element = this->head;
+	int iter = 0;
 
-	while (last->next != nullptr)
-		last = last->next;
+	while(last_element != nullptr || first_element != nullptr){
+
+		for (size_t i = 0; i < this->size - iter; i++)
+			last_element = last_element->next;
+
+		for (size_t i = 0; i < iter; i++)
+			first_element = first_element->next;
+
+		Element<T> *tmp = first_element;
+		first_element = last_element;
+		last_element = tmp;
+		iter++;
+
+	}
+
+}
+
+template<class T>
+inline void LinkedList<T>::print() const{
 
 	Element<T> *tmp = this->head;
-	this->head = last;
-	last = tmp;
+
+	while (tmp->next != nullptr) {
+
+		try {
+			cout << tmp->obj << " ";
+		}catch (int i) {
+			cout << "Cant print element:(\n";
+		}
+
+		tmp = tmp->next;
+
+	}
 
 }
 
@@ -270,21 +302,9 @@ void LinkedList<T>::push_front(const T & elem) {
 template<typename T>
 ostream & operator<<(ostream & os, const LinkedList<T>& lst) {
 
-	T *tmp = lst->head;
-
-	while (tmp->next != nullptr) {
-
-		try {
-			cout << tmp->obj << " ";
-		}catch (int i){
-			cout << "Cant print element:(\n";
-		}
-
-		tmp = tmp->next;
-
-	}
-
+	lst.print();
 	return os;
+
 }
 
 template<class T>
@@ -294,8 +314,8 @@ inline LinkedList<T>::~LinkedList(){
 
 	while (tmp->next != nullptr) {
 
-		this->pop_front();
 		tmp = tmp->next;
+		this->pop_front();
 
 	}
 
