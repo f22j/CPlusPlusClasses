@@ -115,7 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AirVehicle.cpp" />
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="CircleInSquare.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="disk.cpp" />
     <ClCompile Include="Drob.cpp" />
@@ -123,9 +126,12 @@
     <ClCompile Include="gearbox.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrix.cpp" />
+    <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="Priority_queue.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="rubber.cpp" />
+    <ClCompile Include="Square.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="StringPointer.cpp" />
@@ -137,8 +143,11 @@
     <ClCompile Include="wheel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AirVehicle.h" />
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="Car.h" />
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="CircleInSquare.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="disk.h" />
     <ClInclude Include="Drob.h" />
@@ -148,11 +157,14 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="matrix.h" />
+    <ClInclude Include="Plane.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Priority_queue.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="rubber.h" />
     <ClInclude Include="single_tone.h" />
+    <ClInclude Include="Square.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="StringPointer.h" />

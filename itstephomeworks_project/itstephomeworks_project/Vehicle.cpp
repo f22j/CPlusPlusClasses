@@ -11,7 +11,10 @@ Vehicle::Vehicle(){
 
 Vehicle::Vehicle(string color, string model, Date produce_date, int maxSpeed){
 
-	
+	this->setColor(color);
+	this->setModel(model);
+	this->setDate(produce_date);
+	this->setMaxSpeed(maxSpeed);
 
 }
 
@@ -24,7 +27,7 @@ string Vehicle::getModel() const{
 }
 
 string Vehicle::getDate() const{
-	return string();
+	return this->produce_date.get_date();
 }
 
 int Vehicle::getMaxSpeed() const{
@@ -32,26 +35,37 @@ int Vehicle::getMaxSpeed() const{
 }
 
 string Vehicle::getInfo() const{
-	return string();
+	return "Color:" + this->color + "\nModel:" + this->model + "\nMax speed:" + to_string(this->maxSpeed) + "\nProduce date:"
+		+ this->produce_date.get_date();
 }
 
 void Vehicle::setColor(string & color){
+	this->color = color;
 }
 
 void Vehicle::setColor(string && color){
+	this->color = color;
+}
+
+void Vehicle::setMaxSpeed(int maxSpeed){
+	if (maxSpeed > 0)
+		this->maxSpeed = maxSpeed;
+	else
+		this->maxSpeed = 0;
 }
 
 void Vehicle::setModel(string & model){
+	this->model = model;
 }
 
 void Vehicle::setModel(string && model){
+	this->model = model;
 }
 
 void Vehicle::setDate(Date & dt){
+	this->produce_date = dt;
 }
 
 void Vehicle::setDate(Date && dt){
-}
-
-Vehicle::~Vehicle(){
+	this->produce_date = dt;
 }
