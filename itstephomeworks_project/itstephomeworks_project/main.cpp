@@ -1,16 +1,18 @@
 #include <iostream>
-#include "LinkedList.h"
+#include <string>
+#include "BinaryTree.h"
 using namespace std;
 
 int main() {
 
-	LinkedList<int> a;
+	BinaryTree<int, int> tr;
 
-	for (size_t i = 0; i < 9; i++)
-		a.push_back(i);
+	for (int i = 0; i < 10; i++)
+		tr.insert(i, i);
 
-	a.reverse();
-	cout << a;
+	tr.print();
+	tr.erase(5);
+	tr.print();
 
 	system("pause");
 }

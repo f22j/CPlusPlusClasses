@@ -16,6 +16,9 @@
     <Filter Include="Исходные файлы\Vehicle">
       <UniqueIdentifier>{dc8f98bb-dc84-4ae4-be22-2afc9b304c2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Vehicle">
+      <UniqueIdentifier>{7a0a9fe7-b462-4223-8451-22ab79e39b59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -76,7 +79,7 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Vehicle.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Vehicle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +156,7 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Vehicle.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Vehicle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
