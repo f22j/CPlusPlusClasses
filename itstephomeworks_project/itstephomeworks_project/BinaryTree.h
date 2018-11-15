@@ -48,6 +48,9 @@ public:
 	void insert(T && key, T2 && obj);
 
 	void remove(Node<T, T2> *nd);
+	
+	Node<T, T2> *minNode(Node<T, T2> *from_node);
+	
 	~BinaryTree();
 };
 
@@ -194,6 +197,15 @@ inline void BinaryTree<T, T2>::remove(Node<T, T2>* nd){
 }
 
 template<class T, class T2>
+inline Node<T, T2>* BinaryTree<T, T2>::minNode(Node<T, T2>* from_node){
+
+	while(from_node->left != nullptr)
+		from_node = from_node->left;
+
+	return from_node;
+}
+
+template<class T, class T2>
 inline void BinaryTree<T, T2>::print() const{
 	this->printNode(this->root);
 }
@@ -275,7 +287,8 @@ inline void BinaryTree<T, T2>::erase(T key) {
 
 	else {
 
-		
+		swap(nd, minNode(nd->right));
+		delete nd;
 
 	}
 
