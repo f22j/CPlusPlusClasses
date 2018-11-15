@@ -280,10 +280,10 @@ inline void BinaryTree<T, T2>::erase(T key) {
 		throw exception("KeyError: cant find node");
 
 	if (nd->left == nullptr && nd->right != nullptr) 
-		nd = nd->right;
+		swap(nd, nd->right);
 
 	else if (nd->left != nullptr && nd->right == nullptr)
-		nd = nd->left;
+		swap(nd, nd->left);
 
 	else {
 
