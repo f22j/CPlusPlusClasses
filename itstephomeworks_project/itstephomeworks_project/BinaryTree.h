@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 using namespace std;
 
@@ -253,26 +253,31 @@ inline void BinaryTree<T, T2>::deleteNode(Node<T, T2> *nd){
 template<class T, class T2>
 inline void BinaryTree<T, T2>::erase(T key) {
 
-	Node<T, T2> *tmp = this->root;
+	Node<T, T2> *nd = this->root;
 
-	while (tmp != nullptr) {
+	while ((nd != nullptr) && (nd->key != key)){
 
-		if (tmp->key == key)
-			break;
-
-		else if (key < tmp->key)
-			tmp = tmp->left;
+		if (key < p->k) 
+			nd = nd->left;
 		else
-			tmp = tmp->right;
-
-		cout << iostream
+			nd = nd->right;
 
 	}
 
-	if(this->root->key != key && tmp == this->root)
-		throw exception("Cant find node");
+	if (nd == this->root && this->root->key != key)
+		throw exception("KeyError: cant find node");
 
-	this->deleteNode(tmp);
+	if (nd->left == nullptr && nd->right != nullptr) 
+		nd = nd->right;
+
+	else if (nd->left != nullptr && nd->right == nullptr)
+		nd = nd->left;
+
+	else {
+
+		
+
+	}
 
 }
 
