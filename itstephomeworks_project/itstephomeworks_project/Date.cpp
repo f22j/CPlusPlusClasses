@@ -129,6 +129,22 @@ void Date::print_date() const{
 	cout << year << endl;
 }
 
+string Date::get_date() const{
+
+	string date_str;
+
+	if (this->day < 10)
+		date_str += "0";
+	date_str += to_string(this->day) + ":";
+
+	if (this->month < 10)
+		date_str += "0";
+	date_str += to_string(this->month) + ":" + to_string(this->year);
+
+	return date_str;
+
+}
+
 bool Date::is_lipe() const {
 
 	if (this->year % 4 != 0)
@@ -294,6 +310,6 @@ Date::operator string(){
 	if (this->month < 10)
 		date_str += "0";
 	date_str += to_string(this->month) + ":" + to_string(this->year);
-	
+
 	return date_str;
 }

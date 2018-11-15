@@ -33,5 +33,5 @@ public:
 	void setColor(string &color);
 	void setColor(string &&color);
 
-	~Vehicle();
+	void setMaxSpeed(int maxSpeed);
 };

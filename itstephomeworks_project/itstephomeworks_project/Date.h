@@ -30,6 +30,7 @@ public:
 	void pop_year();
 
 	void print_date() const;
+	string get_date() const;
 	bool is_lipe() const;
 
 	Date operator++();
