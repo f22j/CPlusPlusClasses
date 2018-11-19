@@ -116,14 +116,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AirVehicle.cpp" />
+    <ClCompile Include="Animal.cpp" />
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Cat.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CircleInSquare.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="disk.cpp" />
+    <ClCompile Include="Dog.cpp" />
     <ClCompile Include="Drob.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="gearbox.cpp" />
+    <ClCompile Include="Home.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="Plane.cpp" />
@@ -144,15 +148,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AirVehicle.h" />
+    <ClInclude Include="Animal.h" />
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="Car.h" />
+    <ClInclude Include="Cat.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CircleInSquare.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="disk.h" />
+    <ClInclude Include="Dog.h" />
     <ClInclude Include="Drob.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="gearbox.h" />
+    <ClInclude Include="Home.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="List.h" />

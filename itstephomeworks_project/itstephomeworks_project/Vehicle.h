@@ -21,9 +21,6 @@ public:
 	int getMaxSpeed() const;
 	string getInfo() const;
 
-	void setColor(string &color);
-	void setColor(string &&color);
-
 	void setModel(string &model);
 	void setModel(string &&model);
 

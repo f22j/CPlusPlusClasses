@@ -16,9 +16,6 @@
     <Filter Include="Исходные файлы\Vehicle">
       <UniqueIdentifier>{dc8f98bb-dc84-4ae4-be22-2afc9b304c2e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Vehicle">
-      <UniqueIdentifier>{7a0a9fe7-b462-4223-8451-22ab79e39b59}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -79,7 +76,7 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Vehicle.cpp">
-      <Filter>Исходные файлы\Vehicle</Filter>
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="AirVehicle.cpp">
       <Filter>Исходные файлы</Filter>
@@ -97,6 +94,18 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="CircleInSquare.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Animal.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Cat.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Dog.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Home.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -174,7 +183,7 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Vehicle.h">
-      <Filter>Файлы заголовков\Vehicle</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="AirVehicle.h">
       <Filter>Файлы заголовков</Filter>
@@ -192,6 +201,18 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="CircleInSquare.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Animal.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Cat.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Dog.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Home.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
