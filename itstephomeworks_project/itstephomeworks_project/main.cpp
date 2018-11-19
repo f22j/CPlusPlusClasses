@@ -4,7 +4,8 @@ using namespace std;
 
 void main() {
 
-
+	string a;
+	cout << typeid(a).name();
 
 	system("pause");
 }
