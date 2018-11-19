@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 using namespace std;
 
@@ -17,12 +17,12 @@ struct Node {
 template<class T, class T2>
 class BinaryTree{
 
-	Node<T, T2> *root = nullptr;
-	int size = 0;
+	Node<T, T2> *root;
+	int size;
 
 public:
-	BinaryTree() = default;
-	BinaryTree(const T &key, const BinaryTree<T, T2> &obj);
+	BinaryTree();
+	BinaryTree(const T key, const BinaryTree<T, T2> obj);
 
 	BinaryTree(const BinaryTree<T, T2> &copy_tree);
 	BinaryTree(BinaryTree<T, T2> &&copy_tree);
@@ -41,20 +41,29 @@ public:
 	void addTree(Node<T, T2>* nd);
 
 	void clear();
-	void swap(T &key1, T key2);
-
 	void deleteNode(Node<T, T2> *nd);
-	void erase(T &key);
+	void erase(T key);
 
-	void insert(T &key, T2 & obj);
+	void insert(T &key, T2 &obj);
 	void insert(T && key, T2 && obj);
 
 	void remove(Node<T, T2> *nd);
+	
+	Node<T, T2> *minNode(Node<T, T2> *from_node);
+	
 	~BinaryTree();
 };
 
 template<class T, class T2>
-inline BinaryTree<T, T2>::BinaryTree(const T &key, const BinaryTree<T, T2> &obj){
+inline BinaryTree<T, T2>::BinaryTree(){
+
+	this->root = nullptr;
+	this->size = 0;
+
+}
+
+template<class T, class T2>
+inline BinaryTree<T, T2>::BinaryTree(const T key, const BinaryTree<T, T2> obj){
 
 	this->root = new Node<T, T2>;
 
@@ -188,6 +197,15 @@ inline void BinaryTree<T, T2>::remove(Node<T, T2>* nd){
 }
 
 template<class T, class T2>
+inline Node<T, T2>* BinaryTree<T, T2>::minNode(Node<T, T2>* from_node){
+
+	while(from_node->left != nullptr)
+		from_node = from_node->left;
+
+	return from_node;
+}
+
+template<class T, class T2>
 inline void BinaryTree<T, T2>::print() const{
 	this->printNode(this->root);
 }
@@ -217,23 +235,62 @@ inline void BinaryTree<T, T2>::clear(){
 }
 
 template<class T, class T2>
-inline void BinaryTree<T, T2>::swap(T & key1, T key2){
-}
-
-template<class T, class T2>
 inline void BinaryTree<T, T2>::deleteNode(Node<T, T2> *nd){
 
 	if (nd == nullptr)
 		return;
 
-	
+	if (nd->left == nullptr && nd->right == nullptr)
+		delete nd;
+
+	else if (nd->left != nullptr) {
+
+		swap(nd, nd->left);
+		deleteNode(nd->left);
+
+	}else if (nd->right != nullptr) {
+
+		swap(nd, nd->right);
+		deleteNode(nd->right);
+
+	}else{
+
+		swap(nd, nd->right);
+		deleteNode(nd->right);
+
+	}
 
 }
 
 template<class T, class T2>
-inline void BinaryTree<T, T2>::erase(T & key){
+inline void BinaryTree<T, T2>::erase(T key) {
 
-	while
+	Node<T, T2> *nd = this->root;
+
+	while ((nd != nullptr) && (nd->key != key)){
+
+		if (key < p->k) 
+			nd = nd->left;
+		else
+			nd = nd->right;
+
+	}
+
+	if (nd == this->root && this->root->key != key)
+		throw exception("KeyError: cant find node");
+
+	if (nd->left == nullptr && nd->right != nullptr) 
+		swap(nd, nd->right);
+
+	else if (nd->left != nullptr && nd->right == nullptr)
+		swap(nd, nd->left);
+
+	else {
+
+		swap(nd, minNode(nd->right));
+		delete nd;
+
+	}
 
 }
 
@@ -253,7 +310,8 @@ inline void BinaryTree<T, T2>::insert(T & key, T2 & obj){
 
 	}
 
-	Node<T, T2> *tmp = this->head, *parent = nullptr;
+	Node<T, T2> *tmp = this->root;
+	Node<T, T2> *parent = nullptr;
 
 	while (tmp != nullptr) {
 
