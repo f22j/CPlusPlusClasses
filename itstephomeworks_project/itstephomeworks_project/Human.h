@@ -1,65 +1,27 @@
 #pragma once
 #include <iostream>
+#include <string>
 using namespace std;
 
-class Human {
+class Human{
 
-	char *name;
+	string name;
 	unsigned short age;
 	bool sex;
 
 public:
 
-	Human(const char *new_name, unsigned short new_age, bool new_sex) {
+	Human(string new_name, unsigned short new_age, bool new_sex);
+	virtual string human_info() const;
 
-		name = new char[strlen(new_name) + 1];
-		strcpy_s(name, strlen(new_name) + 1, new_name);
-		sex = new_sex;
+	void set_name(string &setted_name);
+	void set_name(string &&setted_name);
 
-	};
+	void set_gender(bool setted_sex);
+	void set_age(int setted_age);
 
-	Human(const Human &obj) {
-
-		
-
-	}
-
-	void human_info(const char *delimeter = "\n") {
-
-		cout << name << delimeter << age << delimeter << sex << delimeter;
-
-	}
-
-	void set_name(const char *setted_name){
-
-		if (strlen(setted_name) != strlen(name)){
-
-			delete[] name;
-			name = new char[strlen(setted_name) + 1];
-
-		};
-
-		strcpy_s(name, strlen(setted_name) + 1, setted_name);
-
-	}
-
-	void set_gender(bool setted_sex){
-		sex = setted_sex;
-	}
-
-	void set_age(int setted_age){
-
-		if (setted_age >= 0)age = setted_age;
-		else age = 1;
-
-	}
-
-	unsigned short get_age(){ return age; }
-
-	bool get_sex(){ return sex; }
-
-	const char *get_name(){ return name; }
-
-	~Human(){delete[] name;}
+	unsigned short get_age() const;
+	bool get_sex()const;
+	string get_name()const;
 
 };

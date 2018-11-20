@@ -1,15 +1,18 @@
 #include "Plane.h"
 
-Plane::Plane(){
+Plane::Plane(int wings){
+	this->set_wings(wings);
 }
 
-Plane::Plane(int takeoffSpeed, int wings, string is_fast){
+void Plane::set_wings(int wings){
+
+	if (this->wings > 0)
+		this->wings = wings;
+	else
+		this->wings = 1;
+
 }
 
-void Plane::setTakeOffSpeed()
-{
-}
-
-Plane::~Plane()
-{
+int Plane::get_wings() const{
+	return this->wings;
 }

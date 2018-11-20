@@ -3,16 +3,14 @@
 #include "AirVehicle.h"
 using namespace std;
 
-class Plane: AirVehicle{
+class Plane :public AirVehicle{
 
-	int takeoffSpeed, wingsCount;
-	string is_fast;
+	int wings;
 
 public:
-	Plane();
-	Plane(int takeoffSpeed, int wings, string is_fast);
+	Plane(int wings=1);
 
-	void setTakeOffSpeed();
+	void set_wings(int wings);
+	int get_wings()const;
 
-	~Plane();
 };
