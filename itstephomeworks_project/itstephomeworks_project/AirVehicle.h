@@ -8,8 +8,8 @@ class AirVehicle: Vehicle{
 	int maxAltitude;
 
 public:
-	AirVehicle();
-	AirVehicle(int maxAltitude);
+	AirVehicle(string color = "", string model = "", 
+		Date produce_date = Date(), int maxSpeed = 0, int maxAltitude = 0);
 
 	void setMaxAltitude(int maxAltitude);
 	int getMaxAltitude() const;

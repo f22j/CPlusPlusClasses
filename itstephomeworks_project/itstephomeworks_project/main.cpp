@@ -1,6 +1,10 @@
 #include <iostream>
+#include "OrganizationInterface.h"
 using namespace std;
 
 void main() {
-	system("pause");
+
+	OrganizationInterface org;
+	org.start();
+
 }

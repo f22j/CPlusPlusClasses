@@ -2,9 +2,13 @@
 
 Human::Human(string new_name, unsigned short new_age, bool new_sex){
 
+	this->set_name(new_name);
+	this->set_age(new_age);
+	this->set_gender(new_sex);
+
 }
 
-string Human::human_info(){
+string Human::human_info() const{
 	return "Name:" + this->name + "\nAge:" + to_string(this->age) + "\nSex:" + to_string(this->sex) + "\n";
 }
 

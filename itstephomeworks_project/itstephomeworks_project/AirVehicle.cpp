@@ -1,10 +1,7 @@
 #include "AirVehicle.h"
 
-AirVehicle::AirVehicle(){
-	this->maxAltitude = 0;
-}
-
-AirVehicle::AirVehicle(int maxAltitude){
+AirVehicle::AirVehicle(string color, string model, 
+	Date produce_date, int maxSpeed, int maxAltitude):Vehicle(color, model, produce_date, maxSpeed){
 	setMaxAltitude(maxAltitude);
 }
 

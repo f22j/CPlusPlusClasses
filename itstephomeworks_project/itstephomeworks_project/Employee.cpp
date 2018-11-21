@@ -1,10 +1,13 @@
 #include "Employee.h"
 
+int Employee::sequence = 0;
+
 Employee::Employee(string name, unsigned short new_age, bool new_sex, 
 int experience, EducationType education):Human(name, new_age, new_sex){
 
 	this->setExperience(experience);
 	this->setEducation(education);
+	this->id = this->sequence++;
 
 }
 
@@ -37,5 +40,9 @@ float Employee::getRate() const{
 
 string Employee::human_info() const{
 	return Human::human_info() + "\nExperience:" + to_string(this->experience) 
-		+ "\nRate:" + to_string(this->rate);
+		+ "\nRate:" + to_string(this->rate) + "\n";
+}
+
+int Employee::getId() const{
+	return this->id;
 }

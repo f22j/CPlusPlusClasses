@@ -11,7 +11,8 @@ enum EducationType {
 
 class Employee abstract:public Human {
 
-	unsigned int experience;
+	unsigned int experience, id;
+	static int sequence;
 	float rate;
 	EducationType education;
 
@@ -24,7 +25,9 @@ public:
 
 	EducationType getEducation() const;
 	int getExperience() const;
+
 	virtual float getRate() const;
 	string human_info() const override;
 
+	int getId() const;
 };

@@ -1,14 +1,5 @@
 #include "Vehicle.h"
 
-Vehicle::Vehicle(){
-
-	this->color = "";
-	this->maxSpeed = 0;
-	this->model = "";
-	this->produce_date = Date();
-
-}
-
 Vehicle::Vehicle(string color, string model, Date produce_date, int maxSpeed){
 
 	this->setColor(color);

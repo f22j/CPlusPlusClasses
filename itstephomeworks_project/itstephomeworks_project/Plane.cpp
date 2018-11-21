@@ -1,7 +1,11 @@
 #include "Plane.h"
 
-Plane::Plane(int wings){
+Plane::Plane(string color, string model, Date produce_date, 
+	int maxSpeed, int maxAltitude, int wings):
+	AirVehicle(color, model, produce_date, maxSpeed, maxAltitude){
+
 	this->set_wings(wings);
+
 }
 
 void Plane::set_wings(int wings){

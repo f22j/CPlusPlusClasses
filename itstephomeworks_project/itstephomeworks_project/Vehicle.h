@@ -11,8 +11,8 @@ class Vehicle{
 	int maxSpeed;
 
 public:
-	Vehicle();
-	Vehicle(string color, string model, Date produce_date, int maxSpeed);
+	Vehicle(string color = "", string model = "", 
+		Date produce_date = Date(), int maxSpeed = 0);
 	
 	string getColor() const;
 	string getModel() const;
