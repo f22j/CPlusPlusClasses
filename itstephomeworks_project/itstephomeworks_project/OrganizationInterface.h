@@ -8,7 +8,7 @@
 using namespace std;
 
 class OrganizationInterface{
-	
+
 	Organization org;
 
 	void addEmployee();

@@ -19,7 +19,7 @@ void OrganizationInterface::start(){
 	this->org.setSalary(salary);
 	
 	std::system("cls");
-	this->org.info();
+	this->org.Info();
 
 	std::system("pause & cls");
 	this->mainMenu();
@@ -159,6 +159,24 @@ void OrganizationInterface::removeEmployee(){
 }
 
 void OrganizationInterface::EmployeesInfo() const{
-	this->org.info();
-	std::system("pause");
+
+	try {
+		this->org.Info();
+
+	}catch(exception &exc){
+		cout << "You dont have employees\n";
+	}
+
+	int id;
+	cout << "Write id:";
+	cin >> id;
+
+	system("cls");
+
+	try {
+		this->org.EmployeeInfo(id - 1);
+
+	}catch (exception &exc) {
+		cout << "Wrond id!";
+	}
 }

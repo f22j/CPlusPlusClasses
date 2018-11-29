@@ -14,7 +14,8 @@ public:
 	Organization(string name, int salary);
 	void addEmployee(Employee *emp);
 
-	void info() const;
+	void EmployeeInfo(int id) const;
+	void Info() const;
 	float getAllRate() const;
 
 	void setSalary(int salary);

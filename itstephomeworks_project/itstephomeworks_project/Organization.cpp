@@ -11,14 +11,21 @@ void Organization::addEmployee(Employee * emp){
 	this->emp.push_back(unique_ptr<Employee>(emp));
 }
 
-void Organization::info() const{
+void Organization::EmployeeInfo(int id) const{
 
-	for (int i = 0; i < this->emp.size(); i++) {
+	if (id < 0 && id > this->emp.size())
+		return;
 
-		cout << this->emp[i]->human_info();
-		cout << "Salary:" << this->emp[i]->getRate() * salary << endl;
+	cout << this->emp[id]->human_info();
+	cout << "Salary:" << this->emp[id]->getRate() * salary << endl;
 
-	}
+}
+
+void Organization::Info() const{
+
+	for (size_t i = 0; i < this->emp.size(); i++)
+		cout << i + 1 << "." << this->emp[i]->get_name() 
+			<< " " << typeid(*this->emp[i]).name() << "\n";
 
 }
 
